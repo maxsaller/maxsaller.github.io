@@ -1,0 +1,387 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>MWTCC 2022</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/black.css">
+		<link rel="stylesheet" href="../plugin/customcontrols/style.css">
+		<link rel="stylesheet" href="../../dimension/assets/css/all.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h4 style="margin-bottom: 3cm;">
+						Accurate and cost-effective cavity-modified quantum
+						dynamics from classical-like trajectories</h4>
+					<p style="margin-bottom: 1cm;">
+						<u>Maximilian Saller</u>, Yifan Lai, Eitan Geva
+					</p>
+					<div class="row" style="display: table-row; column_count: 3">
+						<div class="column" style="display: table-cell; float: center; width: 15%; vertical-align: middle">
+							<img src="fig/umich_seal.png">
+						</div>
+						<div class="column" style="display: table-cell; width: 70%; font-size: 20px; vertical-align: top">
+							Department of Chemistry, University of Michigan, Ann Arbor
+						</div>
+						<div class="column" style="display: table-cell; width: 15%; float: center; vertical-align: middle">
+							<img src="fig/umich_seal.png">
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<section>
+						<h1>Cavity</h1>
+					</section>
+
+					<section>
+						<img src="fig/mol.png">
+					</section>
+
+					<section>
+						<img src="fig/mol_mirror.png">
+					</section>
+					
+					<section>
+						<img src="fig/mirror_modes.png">
+					</section>
+
+					<section>
+						<img src="fig/reaction.png" style="width: 500px">
+						<img src="fig/films.png" style="width: 500px;">
+						<div style="font-size: 20px;">
+							Ebbesen <em>et al.</em>,  <em>Angw. Chem.</em>, <b>51</b>, 1592-1596 (2012)
+						</div>
+					</section>
+
+					<section>
+						<img src="fig/result.png" style="width: 750px">
+						<div style="font-size: 20px;">
+							Ebbesen <em>et al.</em>,  <em>Angw. Chem.</em>, <b>51</b>, 1592-1596 (2012)
+						</div>
+					</section>
+
+					<section data-auto-animate>
+						<p>Ebbesen <em>et al.</em>,  <em>Phys. Rev. Lett.</em>, <b>106</b>, 196405 (2011)</p>
+					</section>
+
+					<section data-auto-animate>
+						<p>Ebbesen <em>et al.</em>,  <em>Phys. Rev. Lett.</em>, <b>106</b>, 196405 (2011)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Angw. Chem.</em>, <b>51</b>, 1592-1596 (2012)</p>
+					</section>
+
+					<section data-auto-animate>
+						<p>Ebbesen <em>et al.</em>,  <em>Phys. Rev. Lett.</em>, <b>106</b>, 196405 (2011)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Angw. Chem.</em>, <b>51</b>, 1592-1596 (2012)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Chem. Phys. Chem.</em>, <b>14</b>, 125-131 (2013)</p>
+					</section>
+
+					<section data-auto-animate>
+						<p>Ebbesen <em>et al.</em>,  <em>Phys. Rev. Lett.</em>, <b>106</b>, 196405 (2011)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Angw. Chem.</em>, <b>51</b>, 1592-1596 (2012)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Chem. Phys. Chem.</em>, <b>14</b>, 125-131 (2013)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Acc. Chem. Res.</em>, <b>49</b>, 2403-2412 (2016)</p>
+					</section>
+
+					<section data-auto-animate>
+						<p>Ebbesen <em>et al.</em>,  <em>Phys. Rev. Lett.</em>, <b>106</b>, 196405 (2011)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Angw. Chem.</em>, <b>51</b>, 1592-1596 (2012)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Chem. Phys. Chem.</em>, <b>14</b>, 125-131 (2013)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Acc. Chem. Res.</em>, <b>49</b>, 2403-2412 (2016)</p>
+						<p>Ebbesen <em>et al.</em>,  <em style="color: red;">Science</em>, <b>363</b>, 615-619 (2019)</p>
+					</section>
+				</section>
+				
+
+				<section>
+					<section>
+						<h1>Trajectories</h1>	
+					</section>
+
+					<section>
+						<img src="fig/atob.png" style="width: 50%">
+						<div style="font-size: 25px;">
+							\[
+							P_{\ket{\alpha}\!\bra{\alpha}\rightarrow\ket{\beta}\!\bra{\beta}} (t) = C_{\alpha\beta}(t) = \mathrm{Tr}\Big[
+							\hat{\rho}_{\mathrm{nuc}}\ket{\alpha}\!\bra{\alpha}
+							\mathrm{e}^{\mathrm{i}\hat{H}t}\ket{\beta}\!\bra{\beta} \mathrm{e}^{-\mathrm{i}\hat{H}t}
+							\Big]
+							\]
+						</div>
+					</section>
+					
+					<section>
+						<img src="fig/hamiltonian.png">
+					</section>
+
+					<section>
+						<img src="fig/map.png", style="height: 500px">
+					</section>
+
+					<section>
+						<div style="font-size: 25px;">
+							\[
+							P_{\ket{\alpha}\!\bra{\alpha}\rightarrow\ket{\beta}\!\bra{\beta}} (t) = C_{\alpha\beta}(t) = \mathrm{Tr}\Big[
+							\hat{\rho}_{\mathrm{nuc}}\ket{\alpha}\!\bra{\alpha}
+							\mathrm{e}^{\mathrm{i}\hat{H}t}\ket{\beta}\!\bra{\beta} \mathrm{e}^{-\mathrm{i}\hat{H}t}
+							\Big]
+							\]
+						</div>
+						<img src="fig/atob.png" style="width: 50%">
+						<div style="font-size: 25px;">
+							\[
+							C_{\alpha\beta}(t) \approx \frac{1}{(2\pi)^{F+S}}
+							\iint\iint \rho^W_\mathrm{nuc}(x, p)
+							P_\alpha^W(X,P) P_\beta^W(X(t), P(t))~
+							\mathrm{d}x\,\mathrm{d}p\,\mathrm{d}X\,\mathrm{d}P
+							\]
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 2cm">
+							Some Mapping methods you may have heard of
+						</h4>
+						<p>Mean Field (Ehrenfest)</p>
+						<p>PBME (LSC I)&emsp; &emsp; LSC-IVR (LSC II)</p>
+						<p><span style="color: red"> mLSC</span> &emsp; Windowing (SQC)</p>
+						<p>Spin Mapping</p>
+						<p style="margin-bottom: 2cm">FBTS &emsp; &emsp; PLDM</p>
+						<p style="font-size: 20px; color: red">
+							MACS, A. Kelly and J. Richardson, <em>J. Chem. Phys.</em>, <b>150</b>, 071101 (2019)
+						</p>
+						<p style="font-size: 20px; color: red">
+							MACS, A. Kelly and J. Richardson, <em>Farad. Discus.</em>, <b>221</b>, 150-167 (2020)
+						</p>
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h1>Quantum Dynamics</h1>
+					</section>
+					
+					<section>
+						<h3>
+							Simple Matter - Hard Cavity
+						</h4>						
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 3cm;">
+							Simple Matter - Hard Cavity
+						</h4>
+						<div style="font-size: 28px;">
+							\[
+							\hat{H} = \left(
+								\begin{array}{cc}
+									\varepsilon_1 &amp 0 \\
+									0 &amp \varepsilon_2 \\
+								\end{array}\right)
+
+								+ \sum\limits_{j=1}^{\textcolor{red}{200}} \mu \omega_j \lambda_j \textcolor{red}{R_j}
+								\left(
+								\begin{array}{cc}
+									0 &amp 1 \\
+									1 &amp 0 \\
+								\end{array}\right)
+								+ \sum\limits_{j=1}^{\textcolor{red}{200}} \hbar \omega_j a^{\dagger}_j a_j
+							\]
+						</div>
+						<div>
+							<p>+</p>
+							<p>a 3-level version</p>
+						</div>
+					</section>
+
+					<section>
+						<h4>
+							Simple Matter - Hard Cavity
+						</h4>
+						<img src="fig/mirror_two_level.png">						
+					</section>
+
+					<section>
+						<h4>
+							Simple Matter - Hard Cavity
+						</h4>
+						<img src="fig/2D.png" style="width: 90%; margin-bottom: -.5cm;">
+						<p style="font-size: 20px;">2-level system</p>
+						<p style="font-size: 20px;">
+							MACS, A. Kelly and E. Geva, <em>J. Chem. Phys. Lett.</em>, <b>12</b>, 3163-3170 (2021)
+						</p>
+					</section>
+
+					<section>
+						<h4>
+							Simple Matter - Hard Cavity
+						</h4>
+						<img src="fig/3D.png" style="width: 90%; margin-bottom: -.5cm;">
+						<p style="font-size: 20px;">3-level system</p>
+						<p style="font-size: 20px;">
+							MACS, A. Kelly and E. Geva, <em>J. Chem. Phys. Lett.</em>, <b>12</b>, 3163-3170 (2021)
+						</p>
+					</section>
+
+					<section>
+						<h3>
+							Hard Matter - Simple Cavity
+						</h4>					
+					</section>
+
+
+					<section>
+						<h4 style="margin-bottom: 3cm;">
+							Hard Matter - Simple Cavity
+						</h4>
+						<div style="font-size: 28px;">
+							\[\begin{align*}
+							\hat{H} = &amp\left(
+								\begin{array}{cc}
+									0 &amp \Delta \\
+									\Delta &amp -\varepsilon \\
+								\end{array}\right)
+							+ \frac{1}{2} \left[
+							\frac{P_s^2}{M_s} + M_s \omega_s^2\left(
+							\begin{array}{cc}
+							R_s^2 &amp 0 \\
+							0 &amp (R_s - R_\mathrm{A}^0)^2
+							\end{array}\right)
+							\right]\\
+							&amp+ \frac{1}{2} \sum\limits_{j=1}^{\textcolor{red}{100}}
+							\frac{P_j^2}{M_j} + m_j \omega_j^2 \Big(R_j - \frac{c_j}{M_j \omega_j^2}R_s \Big)^2\\
+							&amp+ \hbar g_c (a^{\dagger}_c + a_c)
+							\left(
+							\begin{array}{cc}
+								0 &amp 1 \\
+								1 &amp 0 \\
+							\end{array}\right)
+							+ \hbar \omega_c a^{\dagger}_c a_c
+							\end{align*}\]
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1cm;">
+							Hard Matter - Simple Cavity
+						</h4>
+						<img src="fig/mirror_ct.png">						
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 3cm;">
+							Hard Matter - Simple Cavity
+						</h4>
+						<div>
+							\[k_{\mathrm{D}\to\mathrm{A}} = \int \mathrm{e}^{\mathrm{i}\varepsilon t} C_{FGR} (t) ~\mathrm{d}t\]
+						</div>
+						<div>
+							\[C_{FGR} (t) = \mathrm{Tr}\Big[\hat{\rho}^{eq} \mathrm{e}^{\mathrm{i}\hat{H}_{\mathrm{D}}t} \hat{\Gamma}_{\mathrm{DA}}\mathrm{e}^{-\mathrm{i}\hat{H}_{\mathrm{A}}t} \hat{\Gamma}_{\mathrm{DA}}\Big]\]
+						</div>		
+					</section>
+
+					<section>
+						<h4>
+							Hard Matter - Simple Cavity
+						</h4>
+						<img src="fig/partial.png" style="margin-bottom: -.5cm;">		
+						<p style="font-size: 25px;">LSC + FGR can give <u>exact</u> results</p>
+						<p style="font-size: 20px;">
+							MACS, Y. Lai and E. Geva, <em>J. Chem. Phys. Lett.</em>, <b>13</b>, 2330-2337 (2022)
+						</p>
+					</section>
+
+				</section>
+
+				<section>
+					<h4 style="margin-bottom: 2cm;">
+						Take home message
+					</h4>
+					<p style="margin-bottom: 1cm; font-size: 25px;">
+						Classical-like trajectories can yield <span style="color: red">accurate</span> results for cavity-modified quantum dynamics.
+					</p>	
+
+					<p style="margin-bottom: 2cm; font-size: 25px;">
+						Since they scale linearly with system size they can access
+						<span style="color: red"> large, complex and multiple molecules</span> and <span style="color: red">multiple cavity modes</span>.
+					</p>
+
+					<p style="font-size: 15px;">
+						"Accurate and cost-effective cavity-modified quantum
+						dynamics from classical-like trajectories"
+					</p>
+				</section>
+
+				<section>
+					<h4>Thanks</h4>
+					<div class="row" style="display: table-row; column_count: 2; margin-bottom: 1cm">
+						<div class="column" style="display: table-cell; float: center; width: 33%; vertical-align: top;">
+							<p style="font-size: 27px;"><u>Prof. Eitan Geva</u></p>
+							<p style="font-size: 27px; margin-bottom: 2cm ">[Dr] Yifan Lai</p>
+
+							<p style="font-size: 27px;">Prof. Jeremy Richardson (ETH Zurich)</p>
+							<p style="font-size: 27px;">Dr Aaron Kelly<br>(MPI Hamburg)</p>
+						</div>
+
+						<div class="column" style="display: table-cell; float: center; width: 66%; vertical-align: top">
+							<img src="fig/group.jpg">
+						</div>
+					</div>
+
+					<img src="fig/logos.png">
+				</section>
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/math/math.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/customcontrols/plugin.js"></script>
+		<script>
+			function backHome() {
+  				window.location.assign("../../index.html")
+			}
+		</script>
+
+		<script>
+			Reveal.initialize({
+				hash: true,
+				slideNumber: false,
+				controls: true,
+				transition: 'fade',
+				navigationMode: "linear",
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX, RevealCustomControls ],
+				customcontrols : {
+					controls: [
+					           	{
+							        id: 'toggle-overview',
+							        title: 'Toggle overview (O)',
+							        icon: '<i class="fa fa-th"></i>',
+							        action: 'Reveal.toggleOverview();'
+							     },
+								{
+					           		id: 'exit',
+					           		title: 'Back to Website',
+					           		icon: '<i class="fa fa-times-circle"></i>',
+					           		// action: 'Reveal.toggleOverview();'
+					           		action: 'backHome();'
+					           	}
+					          ]
+				}
+			});
+		</script>
+	</body>
+</html>
