@@ -24,7 +24,7 @@
     left: 0%;
     top: 0%;
     margin: 0;
-    padding: 50%;
+    padding: 0;
     border: 0;
     font-size: 2rem;
     border-radius: 50%;
@@ -75,10 +75,7 @@
     top: 25%;
     left: 25%;
     font-size: 3rem;
-}
-
-.menu-item a span {
-    text-decoration: none!important;
+    border-bottom: none;
 }
 
 #menu:target>.menu-item:nth-child(6) {
