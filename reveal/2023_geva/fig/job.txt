@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem-per-cpu=10m
+#SBATCH --time=00:10:00
+#
+#SBATCH --account=eitan
+#SBATCH --partition=eitan
+#
+#SBATCH --job-name="test"
+#SBATCH --mail-type=BEGIN,FAIL,END
+#SBATCH --mail-user=msaller@umich.edu
+#
+#SBATCH --output=%j.out
+#SBATCH --error=%j.err
+
+# SANITY CHANGE TO SLURM SUBMIT DIRECTORY
+cd $SLURM_SUBMIT_DIRECTORY
+
+exit 1
+

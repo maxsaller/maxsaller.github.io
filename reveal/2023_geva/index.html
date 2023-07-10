@@ -1,0 +1,435 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Geva Group Talk</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1 style="margin-bottom: .5em">
+						Geva Group Talk
+					</h1>
+					<h3 style="color: #A0A0A0; margin-bottom: .75em">
+						Computational Resources
+					</h3>
+					<p>Max Saller - 10/7/2023</p>
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 2em; float: left">
+					What do we have?
+					</h3>
+
+					<ul style="float: left;">
+						<li>4x Linux Workstations</li>
+						<li>1x Low-Power Linux Login/Slurm Machine</li>
+						<div class="fragment fade-up">
+						<li>7x Lighthouse Compute Nodes</li>
+						<li>Great Lakes access through UMRCP(?)</li>
+						</div>
+					</ul>
+				</section>
+
+				<section>
+					<img src="fig/skunkworks.jpg" style="max-height: 90vh;">
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 2em; float: left;">
+						Hardware: Linux Workstations
+					</h3>
+
+					<table style="font-size: 75%; border: none">
+						<tr>
+							<th>Machine</th>
+							<th>CPU</th>
+							<th>Cores</th>
+							<th style="text-align: center;">Threads</th>
+							<th>Memory</th>
+						</tr>
+						<tr>
+							<td>geva01</td>
+							<td>Intel i9-12900K</td>
+							<td>8P 8E</td>
+							<td style="text-align: center;">24</td>
+							<td>32GB</td>
+						</tr>
+						<tr style="background-color: #454545;">
+							<td>geva02</td>
+							<td>Intel i7-12700K</td>
+							<td>8P 4E</td>
+							<td style="text-align: center;">20</td>
+							<td>32GB</td>
+						</tr>
+						<tr>
+							<td>geva03</td>
+							<td>Intel i7-12700K</td>
+							<td>8P 4E</td>
+							<td style="text-align: center;">20</td>
+							<td>32GB</td>
+						</tr>
+						<tr style="background-color: #454545;">
+							<td>geva04</td>
+							<td>Intel i7-12700K</td>
+							<td>8P 4E</td>
+							<td style="text-align: center;">20</td>
+							<td>32GB</td>
+						</tr>
+					</table>
+
+					<p style="margin-top: 1em;" class="fragment fade-up">
+					Hostname: geva0[1-4].chem.lsa.umich.edu
+					</p>
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 2em; float: left;">
+						Hardware: P-cores vs E-cores
+					</h3>
+
+					<ul style="float: left; font-size: 90%">
+						<li>P-cores have hyperthreading, i.e. 2 threads per core</li>
+						<li>E-cores do not have hyperthreading, i.e. 1 thread per core</li>
+						<li>E-cores run much slower than P-cores</li>
+						<li>Scheduler should prioritize P-cores for compute</li>
+					</ul>
+
+					<div class="fragment fade-up" style="float: left; margin-top: 1em;">
+						<p>
+							Example: 12700K (8P 4E)
+							<ul style="float: left; font-size: 90%">
+								<li>
+									16 thread job: (<span style="color: #7a2a2a">8P</span> 0E)
+								</li>
+								<li>
+									18 thread job: (<span style="color: #7a2a2a">8P 2E</span>)
+								</li>
+							</ul>
+						</p>
+					</div>
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 2em; float: left;">
+						Linux Workstations: Maintenance
+					</h3>
+
+					<ul style="float: left; font-size: 90%">
+						<li>Update (apt) and reboot weekly</li>
+						<li>Check and clean fan filters and inside monthly</li>
+						<li>
+							Easy monitoring of load & temps:
+							<a href="https://github.com/maxsaller/gevamgr">gevamgr</a> or btop
+						</li>
+					</ul>
+
+					<p class="fragment fade-up" style="margin-top: 1em">
+						<img src="fig/gevamgr.png" style="width: 45%;">
+						<img src="fig/btop.png" style="width: 45%;">
+						
+					</p>
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 2em; float: left;">
+						Linux Workstations: Access
+					</h3>
+
+					<ul style="font-size: 90%; float: left;">
+						<li>Login on all machines with UMID and password</li>
+						<li>
+							Access managed through 
+							<a href="https://mcommunity.umich.edu/">MCommunity</a> groups
+							<ul>
+								<li>lsa-eitan-linux</li>
+								<li>lsa-eitan-linux-sudo</li>
+								<li>lsa-eitan-turbo</li>
+							</ul>
+						</li>
+					</ul>
+
+					<p class="fragment fade-up">
+						<img src="fig/mcommunity.png" style="width: 75%">
+					</p>
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 2em; float: left;">
+						Linux Workstations: Remote Tools
+					</h3>
+
+					<ul style="float: left; font-size 90%">
+						<li>
+							.ssh/config and ssh-keygen are your friends<br>
+							<span style="font-family: Source Code Pro; font-size: 66%;">
+								ssh-keygen <span style="color: #7a2a2a;">-b 4096</span>
+							</span>
+						</li>
+					</ul>
+					<img src="fig/sshconfig.png" style="width: 33%; float: center">
+					<ul style="float: left;" class="fragment fade-up">
+						<li>
+							sshfs is the friend you didn't know you needed:<br>
+							<span style="font-family: Source Code Pro; font-size: 50%;">
+								sshfs -o reconnect username@host:/home/username mountpoint
+							</span>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3 style="float: left;">
+						geva-login: slurm node
+					</h3>
+					<br>
+					<p style="margin-bottom: 1em; margin-top: 2em; float: center">
+						I'll get to it...
+					</p>
+					
+					<div class="fragment fade-up">
+						<iframe width="560" height="315" data-src="fig/headbanging.gif" data-autoplay></iframe>
+						<p>
+						...eventually
+						</p>
+					</div>
+				</section>
+
+				<section>
+					<img src="fig/lighthouse.jpg" style="width: 100%;">
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 2em; float: left;">
+						Hardware: Lighthouse
+					</h3>
+
+					<table style="font-size: 75%; border: none">
+						<tr>
+							<th>Machine</th>
+							<th>CPU</th>
+							<th style="text-align: center;">Threads</th>
+							<th>Memory</th>
+						</tr>
+						<tr>
+							<td>lh0057</td>
+							<td>2x Intel XEON E5-2680</td>
+							<td style="text-align: center;">24</td>
+							<td>120GB</td>
+						</tr>
+						<tr style="background-color: #454545;">
+							<td>lh0059</td>
+							<td>2x Intel XEON E5-2680</td>
+							<td style="text-align: center;">24</td>
+							<td>120GB</td>
+						</tr>
+						<tr>
+							<td>lh0060</td>
+							<td>2x Intel XEON E5-2680</td>
+							<td style="text-align: center;">24</td>
+							<td>120GB</td>
+						</tr>
+						<tr style="background-color: #454545;">
+							<td>lh0071</td>
+							<td>2x Intel XEON GOLD 6154</td>
+							<td style="text-align: center;">36</td>
+							<td>183GB</td>
+						</tr>
+						<tr>
+							<td>lh0072</td>
+							<td>2x Intel XEON GOLD 6154</td>
+							<td style="text-align: center;">36</td>
+							<td>183GB</td>
+						</tr>
+						<tr style="background-color: #454545;">
+							<td>lh0073</td>
+							<td>2x Intel XEON GOLD 6154</td>
+							<td style="text-align: center;">36</td>
+							<td>183GB</td>
+						</tr>
+						<tr>
+							<td>lh0074</td>
+							<td>2x Intel XEON GOLD 6154</td>
+							<td style="text-align: center;">36</td>
+							<td>183GB</td>
+						</tr>
+					</table>
+
+					<p style="margin-top: 1em; font-size: 75%;" class="fragment fade-up">
+						lh0058?
+					</p>
+
+					<p style="font-size: 75%;"" class="fragment fade-up">
+						Good Night, Sweet Prince!<br>
+						And flights of angels sing thee to thy rest.
+					</p>
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 2em; float: left;">
+						Lighthouse vs Workstations
+					</h3>
+
+					<table style="font-size: 75%; border: none">
+						<tr>
+							<th>CPU</th>
+							<th>Max Frequency</th>
+						</tr>
+						<tr>
+							<td>Intel XEON E5-2680</td>
+							<td>2.7 - 3.5 GHz</td>
+						</tr>
+						<tr style="background-color: #454545;">
+							<td>Intel XEON GOLD 6154</td>
+							<td>3.0 - 3.7 GHz</td>
+						</tr>
+						<tr>
+							<td>Intel i9-12900K</td>
+							<td>P:5.1 GHz &nbsp; E:3.9 GHz</td>
+						</tr>
+						<tr style="background-color: #454545;">
+							<td>Intel i7-12700K</td>
+							<td>P:4.9 GHz &nbsp; E:3.8 GHz</td>
+						</tr>
+					</table>
+
+					<div  class="fragment fade-up">
+					<ul style="font-size: 75%; margin-top: 2em">
+						<li>The worksations are faster than Lighthouse</li>
+						<li>Lighthouse has a lot more memory than the workstations</li>
+					</ul>
+					<p>Choose wisely!</p>
+					</div>
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 1em; float: left;">
+						Lighthouse: <a href="fig/job.txt">SLURM job file</a>
+					</h3>
+
+					<pre style="width: 50%;">
+						<code data-trim
+						         data-noescape
+						         data-line-numbers
+						         style="font-size: 66%; font-family: Source Code Pro;
+						                line-height: 1.3">
+#!/bin/bash
+
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem-per-cpu=10m
+#SBATCH --time=00:10:00
+#
+#SBATCH --account=eitan
+#SBATCH --partition=eitan
+#
+#SBATCH --job-name="test"
+#SBATCH --mail-type=BEGIN,FAIL,END
+#SBATCH --mail-user=msaller@umich.edu
+#
+#SBATCH --output=%j.out
+#SBATCH --error=%j.err
+
+./do_the_science.x
+
+exit 1
+					</code>
+				</pre>
+				<div style="font-family: Source Code Pro; font-size: 75%; margin-top: 2em;"
+				     class="fragment fade-up">
+					ssh user@lighthouse.arc-ts.umich.edu<br><br>
+					sbatch job.sh
+				</div>
+				</section>
+
+				<section>
+					<img src="fig/kitchensink.jpg" style="width: 80%;">
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 1em; float: left;">
+						Useful LINUX Software:
+					</h3>
+
+					<ul  style="font-size: 75%; float: left; line-height: 1.75;">
+						<li>
+							General, Lightweigh Text-Editor & IDE:
+							<a href="https://www.sublimetext.com/">Sublime Text 4</a>
+							<ul style="font-size: 66%">
+								<li>SublimeGit</li>
+								<li>LSP + LSP-language</li>
+								<li>SublimeLinter + SublimeLinter-language</li>
+							</ul>
+						</li>
+						<li>
+							Markdown Editing & Note Taking:
+							<a href="https://obsidian.md/">Obsidian</a>
+						</li>
+						<li>
+							GNUplot but better (and in python):
+							<a href="https://github.com/maxsaller/plot">plot.py</a>
+						</li>
+						<li>
+							HTML + Javascript presentations:
+							<a href="https://revealjs.com/">Reveal.js</a>
+						</li>
+						<li>
+							Photo Editing and Graphic Design:
+							<a href="https://www.gimp.org/">GIMP</a>
+						</li>
+						<li>
+							3D Modeling:
+							<a href="https://www.blender.org/">Blender</a>
+						</li>
+						<li>
+							Molecular Visualization:
+							<a href="https://www.ks.uiuc.edu/Research/vmd/">VMD</a>,
+							<a href="http://iqmol.org/">IQmol</a>,
+							<a href="https://avogadro.cc/">Avogadro</a>
+						</li>
+						<li>
+							Electronic Structure:
+							<a href="https://orcaforum.kofo.mpg.de/index.php">ORCA</a>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3 style="margin-bottom: 1em; float: left;">
+						Any Resource questions?
+					</h3>
+					<img src="fig/computer_problems.png" style="width: 100%">
+					<h3 style="margin-top: 1em; float: left;" class="fragment fade-up">
+						Software pactices next time!
+					</h3>
+				</section>
+
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/math/math.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				slideNumber: true,
+				controls: false,
+				transition: 'fade',
+				navigationMode: "linear",
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
