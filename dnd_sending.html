@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>D&D Sending</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="dimension/assets/css/main.css" />
+    <link rel="stylesheet" href="radial.css" />
+    <noscript>
+      <link rel="stylesheet" href="dimension/assets/css/noscript.css" />
+    </noscript>
+  </head>
+  <body class="is-preload">
+      <div id="wrapper">
+        <header id="header">
+          <!-- <div class="logo"></div> -->
+          <div class="content">
+            <div class="inner" style="max-height: none; max-width: 80%;
+                                      margin-left: auto;
+                                      margin-right: auto;">
+              <h1>Sending</h1>
+              <div class="fields">
+                <div class="field">
+                  <!-- <label for="message" style="font-size: 150%;">
+                    Message
+                  </label> -->
+                  <textarea name="message" id="message" rows=3 style="font-weight: bold;"></textarea>
+                </div>
+              </div>
+              <!-- <div style="border: 1px solid white;
+                          margin-top: 1em;
+                          margin-bottom: 1em;
+                          /*padding-top: .25em;
+                          padding-bottom: .25em;
+                          padding-left: .5em;
+                          padding-right: .5em;*/
+                          padding: 2%;
+                          min-width: 2em;
+                          width: fit-content;
+                          font-size: 200%;
+                          block-size: fit-content;
+                          margin-left: auto;
+                          margin-right: auto;"
+                    id="counter">0</div> -->
+            <script>
+              document
+                .querySelector("#message")
+                .addEventListener("input", function countWord() {
+                  let res = [];
+                  let str = this.value.replace(/[\t\n\r\.\?\!]/gm, " ").split(" ")
+                  str.map((s) => {
+                    let trimStr = s.trim();
+                    if (trimStr.length > 0) {
+                      res.push(trimStr);
+                    }
+                  });
+                  // document.querySelector("#counter").innerText = res.length;
+                  if (res.length > 25) {
+                    document.querySelector("#message").style.background = "Brown";
+                  } else {
+                    document.querySelector("#message").style.background = "OliveDrab";
+                  }
+                });
+            </script>
+            <!-- <img style="margin-top: 2em;" src="assets/sending.png"> -->
+            <div  style="margin-top: 1em; font-weight: bold;">
+              <p>
+                You send a short message of 25 words or less to a creature with which you are familiar. The creature hears the message in its mind, recognizes you as the sender if it knows you, and can answer in a like manner immediately. The spell enables creatures with Intelligence scores of at least 1 to understand the meaning of your message.
+              </p>
+              <p>
+                You can message across any distance and even to other planes of existence, but if the targes is on a different plane than you, there is a 5% chance that the message doesn't arrive.
+              </p>
+            </div>
+            </div>
+          </div>
+        </header>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <p class="copyright">
+        &copy; Max Saller 2023. Design: <a href="https://html5up.net">HTML5 UP</a>.
+      </p>
+    </footer>
+
+  </div>
+
+    <!-- BG -->
+    <div id="bg"></div>
+
+    <!-- Scripts -->
+    <script src="dimension/assets/js/jquery.min.js"></script>
+    <script src="dimension/assets/js/browser.min.js"></script>
+    <script src="dimension/assets/js/breakpoints.min.js"></script>
+    <script src="dimension/assets/js/util.js"></script>
+    <script src="dimension/assets/js/main.js"></script>
+
+  </body>
+</html>
