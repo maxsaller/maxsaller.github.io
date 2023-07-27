@@ -1,0 +1,21 @@
+.dndicon {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 2rem;
+    border-radius: 50%;
+    background-size: 60%;
+    overflow: hidden;
+    background-image: url("d-and-d-brands.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.dndicon:hover {
+    background-color: rgba(255, 255, 255, 0.075)
+}
