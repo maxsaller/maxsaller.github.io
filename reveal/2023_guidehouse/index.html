@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Theoretical Physics & Chemistry and Scientific Software Development</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3 style="margin-bottom: 1em">
+						Scientific Software Development
+					</h3>
+					<h4 style="margin-bottom: 2em">
+						in Theoretical Physics and Chemistry
+					</h4>
+					<p>Max Saller</p>
+					<p>7/27/2023</p>
+				</section>
+
+				<section>
+					<h4>
+					Research: Method and Software Development
+					</h4>
+					<br>
+					<div style="font-size: 80%;" class="fragment fade-up">
+						<div style="float: left; width: 33%; border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem;">
+							Approximate Quantum Dynamics
+						</div>
+						<div style="float: right; width: 33%;  border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem;">
+							Electronic Structure Theory
+						</div>
+					</div>
+					<div class="fragment fade-up">
+						<ul style="float: left; width: 33%; font-size: 50%; margin-top: 1em;">
+							<li>Governed by Quantum Mechanics</li>
+							<li>Systems are Dynamical in Time</li>
+							<li>Exponential Dimensionality Scaling</li>
+							<li>Develop More Accurate Methods</li>
+						</ul>
+						<ul style="float: right; width: 33%; font-size: 50%;  margin-top: 1em;">
+							<li>Calculate Molecular Properties</li>
+							<li>Systems are (usually) Static in Time</li>
+							<li>Expand Methods to Capture Physics</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h4 style="float: left;">
+						Software Devlopment
+					</h4>
+					<ul style="float: left; font-size: 50%;">
+						<div class="fragment fade-up">
+						<li>Gaussian Wavepacket Dynamics (Ph.D.)</li>
+						<ul>
+							<li>FORTRAN</li>
+							<li>LAPACK Linear Algebra, OpenMP Parallelization</li>
+							<li>Matching Pursuit Acceleration</li>
+						</ul>
+						<br>
+						</div>
+
+						<div class="fragment fade-up">
+						<li> NRPMD.py: Approximate Quantum Dynamics (Postdoc: ETH Zurich)</li>
+						<ul>
+							<li>Python Frontend</li>
+							<li>FORTRAN Backend via f2py</li>
+							<li>LAPACK Linear Algebra, PyData Analysis</li>
+						</ul>
+						<br>
+						</div>
+
+						<div class="fragment fade-up">
+						<li>FMAP, FEHR, CMAP and <em>PYMAP</em>: Approximate Quantum Dynamics (Postdoc: University of Michigan)</li>
+						<ul>
+							<li><a href="https://github.com/maxsaller">Available on GitHub</a></li>
+							<li>FORTRAN, C++ and Python</li>
+							<li>Continued Development and Implementation of New Methods</li>
+						</ul>
+						<br>
+						</div>
+
+						<div class="fragment fade-up">
+						<li>Q-Chem: Electronic Structure Software Development (Postdoc: Kent State University)</li>
+						<ul>
+							<li>Large Commercial Codebase</li>
+							<li>C++ and FORTRAN</li>
+							<li>
+								Automation of Tuning Procedures:
+								<a href="https://github.com/maxsaller/RSHtune">RSHtune</a>
+							</li>
+						</ul>
+						</div>
+					</ul>
+				</section>
+
+				<section>
+					<h4 style="float: left;">
+						Education
+					</h4>
+					<br><br>
+					<h6 style="float: left; font-size: 75%;">
+						Taught Undergraduate and Graduate Students:
+					</h6>
+					<br>
+					<ul style="float: left; font-size: 50%;">
+						<li>Introduction to Programming (C++)</li>
+						<li>Bio-Molecular Simulation (Linux, NAMD, CHARMM)</li>
+						<li>Compuational Analysis Methods (Mathematica)</li>
+						<li>Graduate Research Projects</li>
+						<ul>
+							<li>Introduction to Linux and Shell Environments (bash)</li>
+							<li>Scientific Scripting (Python)</li>
+							<li>Scientific Programming (Python, FORTRAN, C++)</li>
+							<li>Optimization and Acceleration (LAPACK, BLAS, OpenMP)</li>
+							<li>Data Analysis and Visualization (PyData Stack)</li>
+						</ul>
+					</ul>
+				</section>
+
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/math/math.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				slideNumber: true,
+				controls: false,
+				transition: 'fade',
+				navigationMode: "linear",
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
