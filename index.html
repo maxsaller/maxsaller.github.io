@@ -5,8 +5,7 @@
 		<title>Max Saller</title>
 		<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 		<meta charset="utf-8" />
-		<meta name="viewport"
-					content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="dimension/assets/css/main.css" />
 		<link rel="stylesheet" href="radial.css" />
 		<noscript>
@@ -16,247 +15,245 @@
 
 	<!-- BODY -->
 	<body class="is-preload">
-			<div id="wrapper">
+		<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<div class="logo">
-							<ul id="menu">
-            					<a class="menu-button" id="open-menu" href="#menu" title="Contact"></a>
-            					<a class="menu-button" href="#0" title="Hide"></a>
-            					<li class="menu-item">
-	                				<a href="https://github.com/maxsaller" target="_blank" title="GitHub">
-	                    				<span class="fab fa-github"></span>
-	                				</a>
-            					</li>
-					            <li class="menu-item">
-					                <a href="https://scholar.google.com/citations?user=Qmmvq94AAAAJ&hl=en" target="_blank" title="Google Scholar">
-					                    <span class="fa fa-graduation-cap"></span>
-					                </a>
-					            </li>
-					            <li class="menu-item">
-					                <a href="https://www.linkedin.com/in/maximilian-saller" target="_blank" title="LinkedIn">
-					                    <span class="fab fa-linkedin"></span>
-					                </a>
-					            </li>
-					            <li class="menu-item">
-					                <a href="https://twitter.com/maxsaller" target="_blank" title="Twitter">
-					                    <span class="fab fa-twitter"></span>
-					                </a>
-					            </li>
-					            <li class="menu-item">
-					                <a href="dnd.html" title="D&D">
-					                    <span class="fab fa-d-and-d"></span>
-					                </a>
-					            </li>
-					        </ul>
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>Max Saller</h1>
-								<p>
-									Theoretical Physics and Chemistry, Scientific Software Development and Technology-Driven Education.<br>
-								</p>	
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#research"><b>Research</b></a></li>
-								<li><a href="#software"><b>Software</b></a></li>
-								<li><a href="#talks"><b>Conferences</b></a></li>
-								<li><a href="#cv"><b>CV</b></a></li>
-								<li><a href="#contact"><b>Contact</b></a></li>
-							</ul>
-						</nav>
-					</header>
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Research -->
-							<article id="research">
-								<h2 class="major">Research</h2>
-								<span class="image main"><img src="assets/research.png" alt="" /></span>
-								<h3>Mapping Approach Quantum Dynamics</h3>
-								<p>From solar cells to photosynthesis, many processes involving light-matter interactions are governed by the laws of quantum mechanics. To study them computationally we need simulation methods that can capture how they change over time; their <i>quantum dynamics</i>.</p>
-								<p>Using the formal laws of quantum mechanics results in dynamics methods that scale so badly with the size of the system that we could not simulate the photosynthetic reaction chain on the world's largest supercomputer, even if we ran it continuously for 10,000 years! We need cheaper, approximate methods, that still capture the essence of the quantum mechanical processes.</p>
-								<p>My research uses the mapping approach, a way to translate discrete electronic states into continuous variables, to develop quantum dynamics methods which can use classical trajectories. This means they not only scale much better than quantum mechanically exact methods, but they also are <i>embarrassingly parallel</i>. This means that my methods can run on arbitrarily large supercomputers without diminishing returns, even up to thousands or tens of thousands of CPU cores.</p>
-								<p>I have developed a class of methods, which build on existing mapping approach work, but <i>drastically improve the accuracy</i> of the quantum dynamics they return. I have applied these methods to a range of systems, from photosynthetic protein complexes to optical cavities.</p>
-								<p>For more information, see the following articles or <a href="#contact">get in touch</a>!
-								<ul style="margin-top: -2rem">
-									<li>
-										<a href="https://pubs.aip.org/aip/jcp/article/150/7/071101/197585/On-the-identity-of-the-identity-operator-in">On the Identity of the Identity (<i>J. Chem. Phys.</i> 2019)</a>
-									</li>
-									<li>
-										<a href="https://pubs.rsc.org/en/content/articlehtml/2019/fd/c9fd00050j">FMO Light Harvesting Protein (<i>Farad. Disc.</i> 2020)</a>
-									</li>
-									<li>
-										<a href="https://pubs.acs.org/doi/full/10.1021/acs.jctc.9b01267">Comparing to Traditional Mapping (<i>J. Chem. Theory Comp.</i> 2020)</a>
-									</li>
-									<li>
-										<a href="https://pubs.acs.org/doi/full/10.1021/acs.jpclett.1c00158">Cavity Quantum Dynamics (<i>J. Phys. Chem. Lett.</i> 2021)</a>
-									</li>
-								</ul>
-								</p>
-							</article>
-
-						<!-- Talks -->
-							<article id="talks">
-								<h2 class="major">Conferences</h2>
-								<span class="image main"><img src="assets/talk.jpg" alt="" /></span>
-								<ul class="actions">
-									<li><a href="#mwtcc" class="button">52nd Midwest TheoChem (2022)</a></li>
-								</ul>
-							</article>
-
-							<!-- MWTCC -->
-							<article id="mwtcc">
-								<h2>52nd Midwest Theoretical Chemistry Conference</h2>
-								<span class="image main"><img src="reveal/2022_mwtcc/mwtcc.jpg" alt="" /></span>
-								<h3>2022 Ohio State University, Columbus, OH, USA</h3>
-								<p>
-									<ul class="actions">
-										<li><a class="button" href="reveal/2022_mwtcc/index.html">Presentation Slides</a></li>
-										<li><a class="button" href="https://mwtcc.osu.edu/">Conference Website</a></li>
-									</ul>
-									<b>Contributed Talk</b><br>
-									<i>"Accurate and cost-effective cavity-modified quantum dynamics from classical-like trajectories"</i><br><br>
-									Recent experimental observations of strong coupling between photonic cavity modes and molecular matter placed inside the cavity have highlighted potentially exciting new routes for controlling chemical processes. Elucidating the underlying physics and supporting the development of new experimental studies of such systems calls for accurate, flexible and cost-effective theoretical methods for calculating cavity-modified quantum dynamics. Methods based on the linearized semiclassical (LSC) approach show great potential in this respect due to their linear scaling with systems size and ability to interface with higher levels of theory in order to increase the accuracy of results. We have demonstrated two examples of LSC based approaches yielding highly accurate results for cavity modified quantum dynamics without incurring the prohibitively high computational costsassociated with numerically exact methods.<br><br>
-
-									We have shown that a recently proposed set of modified LSC approaches, which use a modified form of the identity operator, considerably outperform traditional LSC without increasing computational cost. These methods yield accurate results for a series of benchmark systems modelling atomic systems placed inside cavities, highlighting their potential as a general purpose tool for simulating cavity-modified dynamics of complex chemical systems.<br><br>
-
-									We have also demonstrated that for charge transfer systems inside cavities, using LSC in conjunction with the Fermi’s Golden Rule approach for calculating rate constants constitutes another powerful tool for the study of quantum dynamics inside cavities. This method for calculating cavity-modified rate constants can in fact yield quantum mechanically exact results for a commonly studied class of light-matter Hamiltonians.
-								</p>
-							</article>	
-
-						<!-- Contact -->
-							<article id="contact">
-								<h2 class="major">Contact</h2>
-								<span class="image main"><img src="assets/wbg.jpg" alt="" /></span>
-								<h3>Dr Maximilian Saller</h3>
-								<p>
-									<b>University of Michigan</b><br>
-									Department of Chemistry<br>
-									E-mail: <a href="mailto:msaller@umich.edu">msaller@umich.edu</a><br>
-								</p>
-								<p>
-									<b>Kent State University</b><br>
-									Department of Chemistry & Biochemistry<br>
-									E-mail: <a href="mailto:msaller@kent.edu">msaller@kent.edu</a>
-								</p>
-								<p>
-									<b>Non-Academic Inquiries</b><br>
-									E-mail: <a href="mailto:maximilian.a.c.saller@gmail.com">maximilian.a.c.saller@gmail.com</a>
-								</p>
-								<ul class="icons">
-									<li><a href="https://github.com/maxsaller" title="GitHub" class="icon brands fa-github"></a></li>
-									<li><a href="https://scholar.google.com/citations?user=Qmmvq94AAAAJ&hl=en" title="Google Scholar" class="fa fa-graduation-cap"></a></li>
-									<li><a href="https://www.linkedin.com/in/maximilian-saller" title="LinkedIn" class="icon brands fa-linkedin"></a></li>
-									<li><a href="https://twitter.com/maxsaller" title="Twitter" class="icon brands fa-twitter"></a></li>
-								</ul>
-							</article>
-
-							<!-- Software -->
-							<article id="software">
-								<h2 class="major">Software</h2>
-								<h3>Plot.py</h3>
-								<span class="image main" style="margin-bottom: 1em; margin-top: 1em;">
-									<img src="assets/plot-example.png" alt="" />
-								</span>
-								<p style="margin-bottom: 1em;">
-									Sometimes you want to plot a data file with a single command. We all <b>sort of</b> know how to do this with gnuplot. But let's face it: matplotlib is more beautiful and better in almost every way. This small, light-weight python scipt lets you do exactly this kind of <b>quick</b> plotting Plus, the matplotlib GUI will let you easily rescale and reframe the plots and save them as images. Don't make figures for publication with this! But if you just wanna take a quick peek at what's in a file, this is your guy!
-								</p>
-								<a href="https://github.com/maxsaller/plot" >
-									Clone the GitHub repo here!
-								</a>
-							</article>
-
-							<!-- CV -->
-							<article id="cv">
-								<h2 class="major">Curriculum Vitae</h2>
-								<span class="image main"><img src="assets/zurich.jpg" alt="" /></span>
-								<h3 style="margin-bottom: 0px;">Full PDF Resumes</h3>
-								<ul>
-									<li><a href="assets/MSaller_CV_academic.pdf">Academic Resume (PDF)</a></li>
-									<li><a href="assets/MSaller_CV_technical.pdf">Technical Resume (PDF)</a></li>
-								</ul>
-								<h3>Short Resume</h3>
-									<ul>
-										<li>
-											<b>2022 - 2023</b>
-											<p style="display: inline-block; vertical-align: top; margin-left: 1em; margin-bottom: .5em;">
-												Postdoctoral Research Fellow<br>
-												<a href="https://www.personal.kent.edu/~bdunietz/index.html">
-													Dunietz Research Group
-												</a><br>
-												Kent State University, OH, USA
-											</p>
-										</li>
-										<li>
-											<b>2020 - 2022</b>
-											<p style="display: inline-block; vertical-align: top; margin-left: 1em; margin-bottom: .5em;">
-												Postdoctoral Research Fellow<br>
-												<!-- <a href="websites.umich.edu/~gevalab/index.html"> -->
-													Geva Research Group<br>
-												<!-- </a>,<br> -->
-												University of Michigan, MI, USA
-											</p>
-										</li>
-										
-										<li>
-											<b>2017 - 2020</b>
-											<p style="display: inline-block; vertical-align: top; margin-left: 1em; margin-bottom: .5em;">
-												Postdoctoral Research Fellow<br>
-												<a href="https://www.richardson.ethz.ch/">
-													Richardson Research Group
-												</a><br>
-												ETH Zurich, Zurich, Switzerland
-											</p>
-										</li>
-										
-										<li>
-											<b>2013 - 2017</b>
-											<p style="display: inline-block; vertical-align: top; margin-left: 1em; margin-bottom: .5em;">
-												PhD in Theoretical Chemistry<br>
-												<a href="https://warwick.ac.uk/fac/sci/chemistry/research/habershon/habershongroup/">
-													Habershon Research Group
-												</a><br>
-												University of Warwick, Coventry, UK
-											</p>
-										</li>
-										
-										<li>
-											<b>2009 - 2013</b>
-											<p style="display: inline-block; vertical-align: top; margin-left: 1em; margin-bottom: .5em;">
-												MChem (Hons) in Theoretical Chemistry<br>
-												<!-- Equivalent to BSc and MS,<br> -->
-												<a href="https://djtozer.webspace.durham.ac.uk/">
-													Tozer Research Group
-												</a><br>
-												University of Durham, Durham, UK
-											</p>
-										</li>
-									</ul>
-							</article>
-
+			<!-- Header -->
+			<header id="header">
+				<div class="logo">
+					<ul id="menu">
+    					<a class="menu-button" id="open-menu" href="#menu" title="Contact"></a>
+    					<a class="menu-button" href="#0" title="Hide"></a>
+    					<li class="menu-item">
+            				<a href="https://github.com/maxsaller" target="_blank" title="GitHub">
+                				<span class="fab fa-github"></span>
+            				</a>
+    					</li>
+			            <li class="menu-item">
+			                <a href="https://scholar.google.com/citations?user=Qmmvq94AAAAJ&hl=en" target="_blank" title="Google Scholar">
+			                    <span class="fa fa-graduation-cap"></span>
+			                </a>
+			            </li>
+			            <li class="menu-item">
+			                <a href="https://www.linkedin.com/in/maximilian-saller" target="_blank" title="LinkedIn">
+			                    <span class="fab fa-linkedin"></span>
+			                </a>
+			            </li>
+			            <li class="menu-item">
+			                <a href="https://twitter.com/maxsaller" target="_blank" title="Twitter">
+			                    <span class="fab fa-twitter"></span>
+			                </a>
+			            </li>
+			            <li class="menu-item">
+			                <a href="dnd.html" title="D&D">
+			                    <span class="fab fa-d-and-d"></span>
+			                </a>
+			            </li>
+			        </ul>
+				</div>
+				<div class="content">
+					<div class="inner">
+						<h1>Max Saller</h1>
+						<p>
+							Theoretical Physics and Chemistry, Scientific Software Development and Technology-Driven Education.<br>
+						</p>	
 					</div>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="#research"><b>Research</b></a></li>
+						<li><a href="#software"><b>Software</b></a></li>
+						<li><a href="#talks"><b>Conferences</b></a></li>
+						<li><a href="#cv"><b>CV</b></a></li>
+						<li><a href="#contact"><b>Contact</b></a></li>
+					</ul>
+				</nav>
+			</header>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; Max Saller 2023. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
+			<!-- Main -->
+			<div id="main">
 
+				<!-- Research -->
+				<article id="research">
+					<h2 class="major">Research</h2>
+					<span class="image main"><img src="assets/research.png" alt="" /></span>
+					<h3>Mapping Approach Quantum Dynamics</h3>
+					<p>From solar cells to photosynthesis, many processes involving light-matter interactions are governed by the laws of quantum mechanics. To study them computationally we need simulation methods that can capture how they change over time; their <i>quantum dynamics</i>.</p>
+					<p>Using the formal laws of quantum mechanics results in dynamics methods that scale so badly with the size of the system that we could not simulate the photosynthetic reaction chain on the world's largest supercomputer, even if we ran it continuously for 10,000 years! We need cheaper, approximate methods, that still capture the essence of the quantum mechanical processes.</p>
+					<p>My research uses the mapping approach, a way to translate discrete electronic states into continuous variables, to develop quantum dynamics methods which can use classical trajectories. This means they not only scale much better than quantum mechanically exact methods, but they also are <i>embarrassingly parallel</i>. This means that my methods can run on arbitrarily large supercomputers without diminishing returns, even up to thousands or tens of thousands of CPU cores.</p>
+					<p>I have developed a class of methods, which build on existing mapping approach work, but <i>drastically improve the accuracy</i> of the quantum dynamics they return. I have applied these methods to a range of systems, from photosynthetic protein complexes to optical cavities.</p>
+					<p>For more information, see the following articles or <a href="#contact">get in touch</a>!
+					<ul style="margin-top: -2rem">
+						<li>
+							<a href="https://pubs.aip.org/aip/jcp/article/150/7/071101/197585/On-the-identity-of-the-identity-operator-in">On the Identity of the Identity (<i>J. Chem. Phys.</i> 2019)</a>
+						</li>
+						<li>
+							<a href="https://pubs.rsc.org/en/content/articlehtml/2019/fd/c9fd00050j">FMO Light Harvesting Protein (<i>Farad. Disc.</i> 2020)</a>
+						</li>
+						<li>
+							<a href="https://pubs.acs.org/doi/full/10.1021/acs.jctc.9b01267">Comparing to Traditional Mapping (<i>J. Chem. Theory Comp.</i> 2020)</a>
+						</li>
+						<li>
+							<a href="https://pubs.acs.org/doi/full/10.1021/acs.jpclett.1c00158">Cavity Quantum Dynamics (<i>J. Phys. Chem. Lett.</i> 2021)</a>
+						</li>
+					</ul>
+					</p>
+				</article>
+
+				<!-- Talks -->
+				<article id="talks">
+					<h2 class="major">Conferences</h2>
+					<span class="image main"><img src="assets/talk.jpg" alt="" /></span>
+					<ul class="actions">
+						<li><a href="#mwtcc" class="button">52nd Midwest TheoChem (2022)</a></li>
+					</ul>
+				</article>
+
+					<!-- MWTCC -->
+				<article id="mwtcc">
+					<h2>52nd Midwest Theoretical Chemistry Conference</h2>
+					<span class="image main"><img src="reveal/2022_mwtcc/mwtcc.jpg" alt="" /></span>
+					<h3>2022 Ohio State University, Columbus, OH, USA</h3>
+					<p>
+						<ul class="actions">
+							<li><a class="button" href="reveal/2022_mwtcc/index.html">Presentation Slides</a></li>
+							<li><a class="button" href="https://mwtcc.osu.edu/">Conference Website</a></li>
+						</ul>
+						<b>Contributed Talk</b><br>
+						<i>"Accurate and cost-effective cavity-modified quantum dynamics from classical-like trajectories"</i><br><br>
+						Recent experimental observations of strong coupling between photonic cavity modes and molecular matter placed inside the cavity have highlighted potentially exciting new routes for controlling chemical processes. Elucidating the underlying physics and supporting the development of new experimental studies of such systems calls for accurate, flexible and cost-effective theoretical methods for calculating cavity-modified quantum dynamics. Methods based on the linearized semiclassical (LSC) approach show great potential in this respect due to their linear scaling with systems size and ability to interface with higher levels of theory in order to increase the accuracy of results. We have demonstrated two examples of LSC based approaches yielding highly accurate results for cavity modified quantum dynamics without incurring the prohibitively high computational costsassociated with numerically exact methods.<br><br>
+
+						We have shown that a recently proposed set of modified LSC approaches, which use a modified form of the identity operator, considerably outperform traditional LSC without increasing computational cost. These methods yield accurate results for a series of benchmark systems modelling atomic systems placed inside cavities, highlighting their potential as a general purpose tool for simulating cavity-modified dynamics of complex chemical systems.<br><br>
+
+						We have also demonstrated that for charge transfer systems inside cavities, using LSC in conjunction with the Fermi’s Golden Rule approach for calculating rate constants constitutes another powerful tool for the study of quantum dynamics inside cavities. This method for calculating cavity-modified rate constants can in fact yield quantum mechanically exact results for a commonly studied class of light-matter Hamiltonians.
+					</p>
+				</article>	
+
+				<!-- Contact -->
+				<article id="contact">
+					<h2 class="major">Contact</h2>
+					<span class="image main"><img src="assets/wbg.jpg" alt="" /></span>
+					<h3>Dr Maximilian Saller</h3>
+					<p>
+						<b>University of Michigan</b><br>
+						Department of Chemistry<br>
+						E-mail: <a href="mailto:msaller@umich.edu">msaller@umich.edu</a><br>
+					</p>
+					<p>
+						<b>Kent State University</b><br>
+						Department of Chemistry & Biochemistry<br>
+						E-mail: <a href="mailto:msaller@kent.edu">msaller@kent.edu</a>
+					</p>
+					<p>
+						<b>Non-Academic Inquiries</b><br>
+						E-mail: <a href="mailto:maximilian.a.c.saller@gmail.com">maximilian.a.c.saller@gmail.com</a>
+					</p>
+					<ul class="icons">
+						<li><a href="https://github.com/maxsaller" title="GitHub" class="icon brands fa-github"></a></li>
+						<li><a href="https://scholar.google.com/citations?user=Qmmvq94AAAAJ&hl=en" title="Google Scholar" class="fa fa-graduation-cap"></a></li>
+						<li><a href="https://www.linkedin.com/in/maximilian-saller" title="LinkedIn" class="icon brands fa-linkedin"></a></li>
+						<li><a href="https://twitter.com/maxsaller" title="Twitter" class="icon brands fa-twitter"></a></li>
+					</ul>
+				</article>
+
+				<!-- Software -->
+				<article id="software">
+					<h2 class="major">Software</h2>
+					<h3>Plot.py</h3>
+					<span class="image main" style="margin-bottom: 1em; margin-top: 1em;">
+						<img src="assets/plot-example.png" alt="" />
+					</span>
+					<p style="margin-bottom: 1em;">
+						Sometimes you want to plot a data file with a single command. We all <b>sort of</b> know how to do this with gnuplot. But let's face it: matplotlib is more beautiful and better in almost every way. This small, light-weight python scipt lets you do exactly this kind of <b>quick</b> plotting Plus, the matplotlib GUI will let you easily rescale and reframe the plots and save them as images. Don't make figures for publication with this! But if you just wanna take a quick peek at what's in a file, this is your guy!
+					</p>
+					<a href="https://github.com/maxsaller/plot" >
+						Clone the GitHub repo here!
+					</a>
+				</article>
+
+				<!-- CV -->
+				<article id="cv">
+					<h2 class="major">Curriculum Vitae</h2>
+					<span class="image main"><img src="assets/zurich.jpg" alt="" /></span>
+					<h3 style="margin-bottom: 0px;">Full PDF Resumes</h3>
+					<ul>
+						<li><a href="assets/MSaller_CV_academic.pdf">Academic Resume (PDF)</a></li>
+						<li><a href="assets/MSaller_CV_technical.pdf">Technical Resume (PDF)</a></li>
+					</ul>
+					<h3>Short Resume</h3>
+						<ul>
+							<li>
+								<b>2022 - 2023</b>
+								<p style="display: inline-block; vertical-align: top; margin-left: 1em; margin-bottom: .5em;">
+									Postdoctoral Research Fellow<br>
+									<a href="https://www.personal.kent.edu/~bdunietz/index.html">
+										Dunietz Research Group
+									</a><br>
+									Kent State University, OH, USA
+								</p>
+							</li>
+							<li>
+								<b>2020 - 2022</b>
+								<p style="display: inline-block; vertical-align: top; margin-left: 1em; margin-bottom: .5em;">
+									Postdoctoral Research Fellow<br>
+									<!-- <a href="websites.umich.edu/~gevalab/index.html"> -->
+										Geva Research Group<br>
+									<!-- </a>,<br> -->
+									University of Michigan, MI, USA
+								</p>
+							</li>
+							
+							<li>
+								<b>2017 - 2020</b>
+								<p style="display: inline-block; vertical-align: top; margin-left: 1em; margin-bottom: .5em;">
+									Postdoctoral Research Fellow<br>
+									<a href="https://www.richardson.ethz.ch/">
+										Richardson Research Group
+									</a><br>
+									ETH Zurich, Zurich, Switzerland
+								</p>
+							</li>
+							
+							<li>
+								<b>2013 - 2017</b>
+								<p style="display: inline-block; vertical-align: top; margin-left: 1em; margin-bottom: .5em;">
+									PhD in Theoretical Chemistry<br>
+									<a href="https://warwick.ac.uk/fac/sci/chemistry/research/habershon/habershongroup/">
+										Habershon Research Group
+									</a><br>
+									University of Warwick, Coventry, UK
+								</p>
+							</li>
+							
+							<li>
+								<b>2009 - 2013</b>
+								<p style="display: inline-block; vertical-align: top; margin-left: 1em; margin-bottom: .5em;">
+									MChem (Hons) in Theoretical Chemistry<br>
+									<!-- Equivalent to BSc and MS,<br> -->
+									<a href="https://djtozer.webspace.durham.ac.uk/">
+										Tozer Research Group
+									</a><br>
+									University of Durham, Durham, UK
+								</p>
+							</li>
+						</ul>
+				</article>
 			</div>
 
+			<!-- Footer -->
+			<footer id="footer">
+				<p class="copyright">&copy; Max Saller 2023. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
+		</div>
+
 		<!-- BG -->
-			<div id="bg"></div>
+		<div id="bg"></div>
 
 		<!-- Scripts -->
-			<script src="dimension/assets/js/jquery.min.js"></script>
-			<script src="dimension/assets/js/browser.min.js"></script>
-			<script src="dimension/assets/js/breakpoints.min.js"></script>
-			<script src="dimension/assets/js/util.js"></script>
-			<script src="dimension/assets/js/main.js"></script>
+		<script src="dimension/assets/js/jquery.min.js"></script>
+		<script src="dimension/assets/js/browser.min.js"></script>
+		<script src="dimension/assets/js/breakpoints.min.js"></script>
+		<script src="dimension/assets/js/util.js"></script>
+		<script src="dimension/assets/js/main.js"></script>
 
 	</body>
 </html>

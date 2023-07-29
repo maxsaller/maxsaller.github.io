@@ -4,8 +4,7 @@
 		<meta charset="UTF-8">
 		<title>D&D Tools</title>
 		<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-		<meta name="viewport"
-					content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="dimension/assets/css/main.css" />
 		<link rel="stylesheet" href="radial.css" />
 		<link rel="stylesheet" href="assets/custom.css" />
@@ -13,88 +12,88 @@
 			<link rel="stylesheet" href="dimension/assets/css/noscript.css" />
 		</noscript>
 	</head>
+
 	<body class="is-preload">
-			<div id="wrapper">
-				<header id="header">
-					<div class="logo">
-						<span class="dndicon" onclick="window.location.href='index.html'"></span>
+		<div id="wrapper">
+			<header id="header">
+				<div class="logo">
+					<span class="dndicon" onclick="window.location.href='index.html'"></span>
+				</div>
+				<div class="content">
+					<div class="inner" style="max-height: none;">
+						<h1>Dungeons & Dragons</h1>
+						<p>
+							A set of useful tools for (mostly) Dungeons & (sometimes) Dragons.
+						</p>
 					</div>
-					<div class="content">
-						<div class="inner" style="max-height: none;">
-							<h1>Dungeons & Dragons</h1>
-							<p>
-								A set of useful tools for (mostly) Dungeons & (sometimes) Dragons.
-							</p>
-						</div>
-					</div> 
-					<nav>
-						<ul>
-							<li><a href="#calendar"><b>Calendar</b></a></li>
-							<li><a href="#sending"><b>Sending</b></a></li>
-						</ul>
-					</nav>
-				</header>
+				</div> 
+				<nav>
+					<ul>
+						<li><a href="#calendar"><b>Calendar</b></a></li>
+						<li><a href="#sending"><b>Sending</b></a></li>
+					</ul>
+				</nav>
+			</header>
 
-				<div id="main">
-					<article id="calendar">
-						<h1>Apententhia & Caella</h1>
-							<p>
-								<iframe
-								src="https://embed.styledcalendar.com/#fvVAOt6Qnih8Nk85VwVr"
-								title="Styled Calendar" class="styled-calendar-container"
-								style="width: 100%; height: 100%; border: none;"
-								data-cy="calendar-embed-iframe">
-								</iframe>
-								<script
-								async type="module"
-								src="https://embed.styledcalendar.com/assets/parent-window.js">
-								</script>
-							</p>
-					</article>
+			<div id="main">
+				<article id="calendar">
+					<h1>Apententhia & Caella</h1>
+						<p>
+							<iframe
+							src="https://embed.styledcalendar.com/#fvVAOt6Qnih8Nk85VwVr"
+							title="Styled Calendar" class="styled-calendar-container"
+							style="width: 100%; height: 100%; border: none;"
+							data-cy="calendar-embed-iframe">
+							</iframe>
+							<script
+							async type="module"
+							src="https://embed.styledcalendar.com/assets/parent-window.js">
+							</script>
+						</p>
+				</article>
 
-					<article id="sending">
-						<h1>Sending</h1>
-						<div class="fields">
-							<div class="field">
-							<textarea name="message" id="message" rows=3 style="font-weight: bold;"></textarea>
-							</div>
+				<article id="sending">
+					<h1>Sending</h1>
+					<div class="fields">
+						<div class="field">
+						<textarea name="message" id="message" rows=3 style="font-weight: bold;"></textarea>
 						</div>
-						<script>
-							document
-							.querySelector("#message")
-							.addEventListener("input", function countWord() {
+					</div>
+					<script>
+						document
+						.querySelector("#message")
+						.addEventListener("input", function countWord() {
 							let res = [];
 							let str = this.value.replace(/[\t\n\r\.\?\!]/gm, " ").split(" ")
 							str.map((s) => {
-							let trimStr = s.trim();
-							if (trimStr.length > 0) {
-							  res.push(trimStr);
-							}
+								let trimStr = s.trim();
+								if (trimStr.length > 0) {
+									res.push(trimStr);
+								}
 							});
-							// document.querySelector("#counter").innerText = res.length;
+
 							if (res.length > 25) {
-							document.querySelector("#message").style.background = "Brown";
+								document.querySelector("#message").style.background = "Brown";
 							} else {
-							document.querySelector("#message").style.background = "OliveDrab";
+								document.querySelector("#message").style.background = "OliveDrab";
 							}
-							});
-						</script>
-						<div  style="margin-top: 1em; font-weight: bold;">
-							<p>
-								You send a short message of 25 words or less to a creature with which you are familiar. The creature hears the message in its mind, recognizes you as the sender if it knows you, and can answer in a like manner immediately. The spell enables creatures with Intelligence scores of at least 1 to understand the meaning of your message.
-							</p>
-							<p>
-								You can message across any distance and even to other planes of existence, but if the targes is on a different plane than you, there is a 5% chance that the message doesn't arrive.
-							</p>
-						</div>
-					<article>
-				</div>
+						});
+					</script>
+					<div  style="margin-top: 1em; font-weight: bold;">
+						<p>
+							You send a short message of 25 words or less to a creature with which you are familiar. The creature hears the message in its mind, recognizes you as the sender if it knows you, and can answer in a like manner immediately. The spell enables creatures with Intelligence scores of at least 1 to understand the meaning of your message.
+						</p>
+						<p>
+							You can message across any distance and even to other planes of existence, but if the targes is on a different plane than you, there is a 5% chance that the message doesn't arrive.
+						</p>
+					</div>
+				<article>
+			</div>
 
-		<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; Max Saller 2023. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
-
+			<!-- Footer -->
+			<footer id="footer">
+				<p class="copyright">&copy; Max Saller 2023. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
 		</div>
 
 		<!-- BG -->
