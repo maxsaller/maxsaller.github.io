@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
 		<link rel="stylesheet" href="../dist/theme/black.css">
+		<link rel="stylesheet" href="custom.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
@@ -25,43 +26,71 @@
 						in Theoretical Physics and Chemistry
 					</h4>
 					<p>Max Saller</p>
-					<p>7/27/2023</p>
+					<p>8/8/2023</p>
 				</section>
 
 				<section>
-					<h4>
-					Research: Method and Software Development
+					<h4 style="float: left; margin-bottom: 5rem;">
+					Research: Method Development
 					</h4>
 					<br>
-					<div style="font-size: 80%;" class="fragment fade-up">
-						<div style="float: left; width: 33%; border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem;">
+					<div style="font-size: 70%;" class="row">
+						<div class="column" style="border: 3pt solid #ffffff;padding: 1rem; border-radius: 1rem; margin-right: 5%;">
+							Classical Trajectory Dynamics
+						</div>
+
+						<div class="column" style="border: 3pt solid #ff0000; padding: 1rem; border-radius: 1rem; margin-right: 5%;">
 							Approximate Quantum Dynamics
 						</div>
-						<div style="float: right; width: 33%;  border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem;">
+
+						<div class="column" style="border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem;">
 							Electronic Structure Theory
 						</div>
 					</div>
-					<div class="fragment fade-up">
-						<ul style="float: left; width: 33%; font-size: 50%; margin-top: 1em;">
-							<li>Governed by Quantum Mechanics</li>
-							<li>Systems are Dynamical in Time</li>
-							<li>Exponential Dimensionality Scaling</li>
-							<li>Develop More Accurate Methods</li>
-						</ul>
-						<ul style="float: right; width: 33%; font-size: 50%;  margin-top: 1em;">
-							<li>Calculate Molecular Properties</li>
-							<li>Systems are (usually) Static in Time</li>
-							<li>Expand Methods to Capture Physics</li>
-						</ul>
+					<div style="font-size: 40%; margin-top: 1rem;" class="row">
+						<div class="column" style="margin-right: 5%; text-align: left;">
+							<ul>
+								<li>Molecular Mechanics/Dynamics</li>
+								<li>Applied to Biological Scale Systems</li>
+								<li>Linear Scaling with System Size</li>
+								<li>Highly Applied, e.g. Pharmaceutics</li>
+							</ul>
+						</div>
+						<div class="column" style="margin-right: 5%;">
+							<ul>
+								<li>Governed by Quantum Mechanics</li>
+								<li>QM: Exponential Scaling</li>
+								<li>Systems are Dynamical in Time</li>
+								<li>Accurate and Approximate Methods</li>
+								<br>
+								<div class="fragment fade-up"  style="color: #ff0000;">
+									<li style="list-style-type: '&rArr; ';">
+										Classical Trajectories + QM
+									</li>
+									<li>Linear Scaling with System Size</li>
+									<li>Probabilistic Quantum Amplitudes</li>
+									<li>On-The-Fly with Electronic Structure</li>
+									<li>Invoke Exact QM When Possible</li>
+								</div>
+							</ul>
+						</div>
+
+						<div class="column">
+							<ul>
+								<li>Calculate Molecular Properties</li>
+								<li>Systems are (usually) Static in Time</li>
+								<li>Expand Methods to Capture Physics</li>
+							</ul>
+						</div>
 					</div>
 				</section>
 
 				<section>
-					<h4 style="float: left;">
+					<h4 style="float: left; margin-bottom: 3rem">
 						Software Devlopment
 					</h4>
 					<ul style="float: left; font-size: 50%;">
-						<div class="fragment fade-up">
+						<div>
 						<li>Gaussian Wavepacket Dynamics (Ph.D.)</li>
 						<ul>
 							<li>FORTRAN</li>
@@ -71,7 +100,7 @@
 						<br>
 						</div>
 
-						<div class="fragment fade-up">
+						<div>
 						<li> NRPMD.py: Approximate Quantum Dynamics (Postdoc: ETH Zurich)</li>
 						<ul>
 							<li>Python Frontend</li>
@@ -81,7 +110,7 @@
 						<br>
 						</div>
 
-						<div class="fragment fade-up">
+						<div>
 						<li>FMAP, FEHR, CMAP and <em>PYMAP</em>: Approximate Quantum Dynamics (Postdoc: University of Michigan)</li>
 						<ul>
 							<li><a href="https://github.com/maxsaller">Available on GitHub</a></li>
@@ -91,7 +120,7 @@
 						<br>
 						</div>
 
-						<div class="fragment fade-up">
+						<div>
 						<li>Q-Chem: Electronic Structure Software Development (Postdoc: Kent State University)</li>
 						<ul>
 							<li>Large Commercial Codebase</li>
@@ -117,7 +146,7 @@
 					<ul style="float: left; font-size: 50%;">
 						<li>Introduction to Programming (C++)</li>
 						<li>Bio-Molecular Simulation (Linux, NAMD, CHARMM)</li>
-						<li>Compuational Analysis Methods (Mathematica)</li>
+						<li>Computaional Analysis Methods (Mathematica)</li>
 						<li>Graduate Research Projects</li>
 						<ul>
 							<li>Introduction to Linux and Shell Environments (bash)</li>
