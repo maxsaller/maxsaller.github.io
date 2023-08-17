@@ -1,0 +1,1160 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>BMS Interview 2023</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/black.css">
+		<link rel="stylesheet" href="../plugin/customcontrols/style.css">
+		<link rel="stylesheet" href="../../dimension/assets/css/all.css">
+		<link rel="stylesheet" href="custom.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2 style="margin-bottom: 3cm;">
+						Accurate and cost-effective quantum dynamics</h2>
+					<p style="margin-bottom: 1cm;">
+						Max Saller
+					</p>
+					<div class="row" style="display: table-row; column_count: 3">
+						<div class="column" style="display: table-cell; float: center; width: 15%; vertical-align: middle">
+							<img src="fig/umich_seal.png">
+						</div>
+						<div class="column" style="display: table-cell; width: 70%; font-size: 20px; vertical-align: top">
+							Department of Chemistry, University of Michigan, Ann Arbor
+						</div>
+						<div class="column" style="display: table-cell; width: 15%; float: center; vertical-align: middle">
+							<img src="fig/umich_seal.png">
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<section>
+						<h2 style="margin-bottom: 1em;">Quantum Dynamics</h2>
+						<p class="fragment">
+							<em>The study of systems which behave quantum mechanically and are dynamical in time.</em>
+						</p>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 2em;">Dynamics & Quantum Mechanics</h4>
+						
+						<div style="font-size: 70%;" class="row">
+							<div class="column" style="border: 3pt solid #ffffff;padding: 1rem; border-radius: 1rem; margin-right: 20%;">
+								Dynamics:<br>Molecular Dynamics
+							</div>
+
+							<div class="column" style="border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem;">
+								Quantum Mechanics: Electronic Structure
+							</div>
+						</div>
+
+						<div style="font-size: 50%; margin-top: 1rem;" class="row fragment">
+							<div class="column" style="margin-right: 20%; text-align: left;">
+								<ul>
+									<li>Evolve system in time by integrating classical equations of motion: $$\dot{q} = \frac{\partial H}{\partial p} \qquad \dot{p} = -\frac{\partial H}{\partial x}$$</li>
+									<li>Linear scaling with system size</li>
+								</ul>
+							</div>
+							<div class="column" style="text-align: left;">
+								<ul>
+									<li>Calculate static properties by solving the time-independent Schrödinger equation:$$\hat{H} \Psi = E \Psi\vphantom{-\frac{\partial V}{\partial x}}$$</li>
+									<li>
+										Non-linear scaling with system size:
+										<br> DFT O(n<sup>3</sup>), MP2 O(n<sup>5</sup>), CCSD(T) O(n<sup>7</sup>)
+									</li>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">Quantum Dynamics</h4>
+						<div class="row">
+							<div class="column fragment"  style="width: 40%; margin-right: 5%;">
+								<div style="border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem; font-size: 70%;">
+									Nonadiabatic Dynamics
+								</div>
+								<div style="font-size: 40%; text-align:left; margin-top: 1em;">
+									<ul>
+										<li>Breakdown of Born-Oppenheimer approximantion</li>
+										<li>
+											Required to simulate dynamical observables:
+											<ul>
+												<li> Spectroscopic properties</li>
+												<li> Rates of reaction</li>
+												<li> Mechanisms of reaction</li>
+											</ul> 
+										</li>
+										<li>Formally goverened by the time-dependent Schrödinger equation:$$i\hbar \frac{\partial}{\partial t} \Psi(t) = \hat{H} \Psi(t)$$</li>
+										<li style="color: red;">
+											Exponential scaling with system size
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="column" style="width: 55%;">
+								<img style="width: 100%;" src="fig/pes.png">
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<h4>Exponential Scaling</h4>
+						<em style="font-size: 75%;">
+							"The Curse of Dimensionality"
+						</em>
+						<div class="row" style=" margin-top: 1em;">
+							<div class="column fragment" style="width: 35%; margin-right: 5%; font-size: 50%;" data-fragment-index="2">
+								<div style="border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem; width: 70%;">
+									Photosynthetic Chain
+								</div>
+								<ul style="float: left; margin-top: .5em; font-size: 75%;">
+									<li>10<sup>4</sup> - 10<sup>5</sup> atoms</li>
+									<li>3N-6 degrees of freedom</li>
+									<li>Photosynthetic process takes ms to s</li>
+									<li>Nonadiabatic effects occur on fs timescale</li>
+									<br>
+									<li>With "exact" methods (MCTDH):<br>
+									<span style="color: red;">
+										Not enough atoms in the universe (~10<sup>80</sup>) for memory!
+									</span>
+									</li>
+									<br>
+									<li>Forgetting about memory:<br>
+									"Universe CPU" + lifetime of the universe...</li>
+									<li style="color: red;">
+										Still not enough time!
+									</li>
+								</ul>
+							</div>
+							<div class="column fragment" style="width: 60%;" data-fragment-index="1">
+								<img src="fig/photo.png">
+							</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 2em;">Approximate Quantum Dynamics</h4>
+						<div class="fragment">
+							<div style="font-size: 70%;">
+								<div style="float: left; width: 40%; box-sizing: border-box; border: 3pt solid #ffffff;padding: 1rem; border-radius: 1rem; margin-right: 10%;">
+									Dynamics:<br>Molecular Dynamics
+								</div>
+							</div>
+							
+							<div style="float: right; width: 50%; font-size: 75%; border: 3pt solid royalblue; padding: 1rem; border-radius: 1rem; box-sizing: border-box; margin-top: 3rem; color: royalblue;" class="fragment">
+								Approximate yet accurate quantum dynamics methods based on trajectories
+							</div>
+
+							<div style="font-size: 50%; margin-top: 1rem;" class="row">
+								<div class="column" style="margin-right: 10%; margin-top: 1rem; text-align: left;">
+									<ul>
+										<li>Evolve system in time by integrating classical equations of motion: $$\dot{q} = \frac{\partial H}{\partial p} \qquad \dot{p} = -\frac{\partial V}{\partial q}$$</li>
+										<li style="color: royalblue;">Linear scaling with system size</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Trajectories</h2>	
+					</section>
+
+					<section>
+						<h4 style="font-size: 80%">
+							Quantum Probabilities
+						</h4>
+						<img src="fig/atob.png" style="width: 50%">
+						<div style="font-size: 25px;">
+							\[
+							P_{\ket{\alpha}\!\bra{\alpha}\rightarrow\ket{\beta}\!\bra{\beta}} (t) = C_{\alpha\beta}(t) = \mathrm{Tr}\Big[
+							\hat{\rho}_{\mathrm{nuc}}\ket{\alpha}\!\bra{\alpha}
+							\mathrm{e}^{\mathrm{i}\hat{H}t}\ket{\beta}\!\bra{\beta} \mathrm{e}^{-\mathrm{i}\hat{H}t}
+							\Big]
+							\]
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 2em;">
+							QM and trajectories: not a great match
+						</h4>
+						<div class="row" style="font-size: 75%;">
+							<div class="column" style=" border: 3pt solid white; padding: 1rem; border-radius: 1rem; box-sizing: border-box; margin-right: 20%;">
+									Trajectories
+							</div>
+							<div class="column" style=" border: 3pt solid white; padding: 1rem; border-radius: 1rem; box-sizing: border-box;">
+									Quantum Mechanics
+							</div>
+						</div>
+
+						<div class="row" style="font-size: 40%;">
+							<div class="column" style="text-align: left; margin-top: 1em; margin-right: 20%;">
+								$$\dot{q} = \frac{\partial H}{\partial p} \qquad \dot{p} = -\frac{\partial H}{\partial q}$$
+								<br>
+								<p class="fragment highlight-red" style="font-size: 140%" data-fragment-index="1">
+									Continuous phase space $(q,p)$
+								</p>
+							</div>
+							<div class="column" style="text-align: left; margin-top: 1em;">
+								$$C_{\alpha\beta}(t) = \mathrm{Tr}\Big[
+								\hat{\rho}_{\mathrm{nuc}}\ket{\alpha}\!\bra{\alpha}
+								\mathrm{e}^{\mathrm{i}\hat{H}t}\ket{\beta}\!\bra{\beta}
+								\mathrm{e}^{-\mathrm{i}\hat{H}t}\Big]
+								\hphantom{-\frac{\partial H}{\partial q}}$$
+								<br>
+								<p class="fragment highlight-red" style="font-size: 140%" data-fragment-index="1">
+									Discrete electronic states $(\ket{\alpha},\ket{\beta})$
+								</p>
+							</div>
+						</div>
+						<br>
+						<div style="color: #ff2c2d;" class="fragment" data-fragment-index="1">
+							Nuclear and electronic Hilbert spaces are incongruent.
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							Mapping onto a single space
+						</h4>
+						<div class="row" style="font-size: 75%;">
+							<div class="column fragment" style="width: 40%; margin-right: 10%;" data-fragment-index="1">
+								<div style="border: 3pt solid white; padding: 1rem; border-radius: 1rem; box-sizing: border-box; font-size: 70%">
+										Singly Excited Harmonic Oscillators
+								</div>
+								<ul style="margin-top: 1em; text-align: left; font-size: 50%;">
+									<li>Each electronic state $\mapsto$ 1D Harmonic Oscillator</li>
+									<li>If the state is populated $\mapsto$ 1st excited state</li>
+									<li>If the state is not populated $\mapsto$ Ground state</li>
+									<li>Each SEO has a set of <em>mapping variables</em> (X,P)</li>
+									<li>Which are the HO position and momentum</li>
+									<li>NOT the electronic position and momentum</li>
+								</ul>
+								<div class="fragment" data-fragment-index="2" style="color: royalblue; font-size: 80%; text-align: left; margin-top: 1.5em;">
+									Single space of continuous variables to propagate trajectories in:
+									$$(q,p) \cup (\ket{\alpha},\ket{\beta}) \mapsto (q,p,X,P)$$
+								</div>
+							</div>
+							<div class="column" style="width: 50%;">
+								<img src="fig/map.png", style="width: 100%;">		
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em; font-size: 90%;">
+							Quantum Probabilities via Correlation Functions
+						</h4>
+
+						<div style="font-size: 50%;">
+							$$C_{\alpha\beta}(t) = \mathrm{Tr}\Big[
+							\hat{\rho}_{\mathrm{nuc}}\ket{\alpha}\!\bra{\alpha}
+							\mathrm{e}^{\mathrm{i}\hat{H}t}\ket{\beta}\!\bra{\beta} \mathrm{e}^{-\mathrm{i}\hat{H}t}\Big]$$
+						</div>
+
+						<div class="row">
+							<div class="column" style="width: 40%;">
+								<img src="fig/atob.png" style="width: 80%">		
+							</div>
+							<div class="column" style="transform: rotate(-90deg); width: 10%; margin-top: .75em;">
+								<img src="fig/arrow.png" style="width: 30%">
+							</div>
+							<div class="column" style="width: 50%;">
+								<img src="fig/atob2.png" style="width: 80%;">
+							</div>
+						</div>
+
+						<div style="font-size: 50%;">
+							$$C_{\alpha\beta}(t) \approx \frac{1}{(2\pi)^{F+S}}
+							\iint\iint \rho^W_\mathrm{nuc}(q, p)
+							P_\alpha^W(X,P) P_\beta^W(X(t), P(t))~
+							\mathrm{d}q\,\mathrm{d}p\,\mathrm{d}X\,\mathrm{d}P$$
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							Equations of motion
+						</h4>
+
+						<div style="font-size: 50%;">
+							$$C_{\alpha\beta}(t) \approx \frac{1}{(2\pi)^{F+S}}
+							\iint\iint \rho^W_\mathrm{nuc}(q, p)
+							P_\alpha^W(X,P) P_\beta^W(X(t), P(t))~
+							\mathrm{d}q\,\mathrm{d}p\,\mathrm{d}X\,\mathrm{d}P$$
+						</div>
+						<img src="fig/map.png", style="width: 30%;">		
+						<div style="font-size: 40%;">
+							$$\dot{q} = \frac{\partial H}{\partial p} \qquad \dot{p} = -\frac{\partial U}{\partial q} - \frac{1}{2} \left[ X^\mathrm{T}\frac{\partial V}{\partial q}X + P^\mathrm{T}\frac{\partial V}{\partial q}P - Tr \frac{\partial V}{\partial q}\right]\qquad \dot{X} = \frac{1}{\hbar}VP \qquad \dot{P} = -\frac{1}{\hbar} V X$$
+						</div>
+					</section>
+
+
+					<section>
+						<h4 style="margin-bottom: 2em;">
+							Semiclassical Mapping Dynamics
+						</h4>
+
+						<div style="font-size: 25px; margin-bottom: 2em;">
+							\[
+							C_{AB} (t) = \frac{1}{(2\pi)^{S+F}} \iint\iint
+							\textcolor{RoyalBlue}{
+							[\hat{\rho}]^W\!(q,p) \,\,[\hat{A}]^W\!(X,P)\,\,}
+							[\hat{B}]^W\!(X(t), P(t))\,\,
+							\mathrm{d}q\, \mathrm{d}p\, \mathrm{d}X\, \mathrm{d}P
+							\]
+						</div>
+						<p>
+							<span style="color: royalblue;">Sampling</span> and
+							<span>Trajectories</span>
+						</p>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 2em;">
+							Semiclassical Mapping Dynamics
+						</h4>
+
+						<div style="font-size: 25px; margin-bottom: 2em;">
+							\[
+							C_{AB} (t) = \frac{1}{(2\pi)^{S+F}} \iint\iint
+							[\hat{\rho}]^W\!(q,p) \,\,[\hat{A}]^W\!(X,P)\,\,
+							[\hat{B}]^W\!(\textcolor{RoyalBlue}{X(t), P(t)})\,\,
+							\mathrm{d}q\, \mathrm{d}p\, \mathrm{d}X\, \mathrm{d}P
+							\]
+						</div>
+						<p>
+							<span>Sampling</span> and
+							<span style="color: royalblue;">Trajectories</span>
+						</p>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 2cm">
+							Mapping methods
+						</h4>
+						<div style="font-size: 80%">
+							<p>Mean Field (Ehrenfest)</p>
+							<p>PBME (LSC I)&emsp; &emsp; LSC-IVR (LSC II)</p>
+							<p><span style="color: royalblue;"> mLSC</span> &emsp; Windowing (SQC)</p>
+							<p>Spin Mapping</p>
+							<p style="margin-bottom: 2cm">FBTS &emsp; &emsp; PLDM</p>
+						</div>
+						<p style="font-size: 50%; color: royalblue;">
+								MACS, A. Kelly and J. Richardson, <em>J. Chem. Phys.</em>, <b>150</b>, 071101 (2019)<br>
+								MACS, A. Kelly and J. Richardson, <em>Farad. Discus.</em>, <b>221</b>, 150-167 (2020)
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Improving Mapping</h2>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							Traditional Mapping FOR A SIMPLE BENCHMARK
+						</h4>
+						<img src="fig/sb.png" style="width: 50%;">
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							Target for improvement: populations
+						</h4>
+
+						<div style="border: 3pt solid white; padding: 1rem; border-radius: 1rem; box-sizing: border-box; width: 40%; margin-right: 30%; margin-left: 30%; font-size: 75%;">
+									Traditional Mapping
+								</div>
+
+						<div class="row" style="font-size: 75%; margin-top: 1em;">
+							<div class="column" style="margin-right: 10%;">
+								<div style="font-size: 75%;">
+									$$\ket{n}\!\!\bra{n} = \frac{1}{2}(\hat{X}_n^2 + \hat{P}_n^2 - 1)\vphantom{\sum\limits_\alpha^{S}}$$
+									$$\ket{1}\!\!\bra{1} =\left(
+									\begin{array}{ccc}
+										1 & 0 & 0\\
+										0 & 0 & 0\\
+										0 & 0 & 0\\
+									\end{array}
+									\right)$$
+								</div>
+							</div>
+							<div class="column fragment" data-fragment-index="1">
+								<div style="font-size: 75%; color: red;">
+									$$\hat{\mathcal{I}} = \sum\limits_\alpha^{S} \ket{\alpha}\!\!\bra{\alpha} = \sum\limits_\alpha^{S} \frac{1}{2}(\hat{X}_\alpha^2 + \hat{P}_\alpha^2 - 1)$$
+									$$ \hat{\mathcal{I}} = \left(
+									\begin{array}{ccc}
+										1 & 0 & 0\\
+										0 & 1 & 0\\
+										0 & 0 & 1\\
+									\end{array}
+									\right)$$
+								</div>
+							</div>
+						</div>
+						<div style="font-size: 75%; color: red; margin-top: .5em;" class="fragment" data-fragment-index="1">
+							Why calculate the expectation value of doing nothing?
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							Improved Mapping: Traceless operators
+						</h4>
+
+						<div class="row" style="font-size: 75%; margin-top: 1em;">
+							<div class="column" style="margin-right: 10%;">
+								<div style="font-size: 75%;">
+									$$\textcolor{red}{\ket{n}\!\!\bra{n} = \frac{1}{2}(\hat{X}_n^2 + \hat{P}_n^2 - 1)}\vphantom{\left[(\hat{X}_n^2 + \hat{P}_n^2) - \sum\limits_\alpha^{S} (\hat{X}_\alpha^2 + \hat{P}_\alpha^2)\right]}$$
+									$$\textcolor{royalblue}{\ket{n}\!\!\bra{n} = \frac{1}{S}\left(\hat{\mathcal{I}} + \hat{Q}_n\right)}
+									\vphantom{\left[(\hat{X}_n^2 + \hat{P}_n^2) - \sum\limits_\alpha^{S} (\hat{X}_\alpha^2 + \hat{P}_\alpha^2)\right]}$$
+								</div>
+							</div>
+							<div class="column fragment">
+								<div style="font-size: 75%;">
+									$$\hat{Q}_n = \frac{1}{2}\left[S \ket{n}\!\!\bra{n} - \sum\limits_\alpha^{S} \ket{\alpha}\!\!\bra{\alpha}\right]$$
+									$$\hat{Q}_n = \frac{1}{2}\left[S(\hat{X}_n^2 + \hat{P}_n^2) - \sum\limits_\alpha^{S} (\hat{X}_\alpha^2 + \hat{P}_\alpha^2)\right]$$
+								</div>
+							</div>
+						</div>
+						<div style="font-size: 56%; margin-top: 2em;" class="fragment">
+							$$\ket{1}\!\!\bra{1} =\frac{1}{3} \left(
+									\begin{array}{ccc}
+										1 & 0 & 0\\
+										0 & 1 & 0\\
+										0 & 0 & 1\\
+									\end{array}
+									\right) + \frac{1}{3}\left(\begin{array}{ccc}
+										2 &  0 &  0\\
+										0 & -1 &  0\\
+										0 &  0 & -1\\
+									\end{array}
+									\right) \textcolor{grey}{\equiv\left(
+									\begin{array}{ccc}
+										1 & 0 & 0\\
+										0 & 0 & 0\\
+										0 & 0 & 0\\
+									\end{array}
+									\right)}$$
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							Improved Mapping: Traceless operators 2
+						</h4>
+
+						<div class="row" style="font-size: 75%; margin-top: 1em;">
+							<div class="column" style="margin-right: 10%;">
+								<div style="font-size: 75%;">
+									$$\ket{n}\!\!\bra{n} = \frac{1}{S}\left(\hat{\mathcal{I}} + \hat{Q}_n\right)
+									\vphantom{C_{\alpha\beta}(t) = \mathrm{Tr}\Big[
+									\hat{\rho}_{\mathrm{nuc}}\ket{\alpha}\!\bra{\alpha}
+									\mathrm{e}^{\mathrm{i}\hat{H}t}\ket{\beta}\!\bra{\beta} \mathrm{e}^{-\mathrm{i}\hat{H}t}\Big]}$$
+								</div>
+							</div>
+							<div class="column fragment">
+								<div style="font-size: 75%;">
+									$$C_{\alpha\beta}(t) = \mathrm{Tr}\Big[
+									\hat{\rho}_{\mathrm{nuc}}\ket{\alpha}\!\bra{\alpha}
+									\mathrm{e}^{\mathrm{i}\hat{H}t}\ket{\beta}\!\bra{\beta} \mathrm{e}^{-\mathrm{i}\hat{H}t}\Big]$$
+								</div>
+							</div>
+						</div>
+
+						<div style="font-size: 56%; margin-top: 2em;" class="fragment">
+							$$C_{\alpha\beta}(t) = \frac{1}{S^2} \Big(
+							C_{\mathcal{II}}(t) + C_{Q_\alpha\mathcal{I}}(t) + C_{\mathcal{I}Q_\beta}(t) + C_{Q_\alpha Q_\beta}(t)
+							\Big)
+							\vphantom{\underbrace{\cancel{C_{\mathcal{I}\mathcal{I}}(t)}}_{S}}$$
+							$$\phantom{C_{\mathcal{I}Q_\beta}(t) = \Big\langle \underbrace{\cancel{\mathcal{I}(X,P)}}_{1} Q_\beta (X(t), P(t))\Big\rangle}$$
+							$$\phantom{C_{Q_\alpha Q_\beta}(t) = \Big\langle Q_\alpha (X,P) Q_\beta (X(t), P(t))\Big\rangle}$$
+						</div>
+				</section>
+
+				<section>
+						<h4 style="margin-bottom: 1em;">
+							Improved Mapping: Traceless operators 2
+						</h4>
+
+						<div class="row" style="font-size: 75%; margin-top: 1em;">
+							<div class="column" style="margin-right: 10%;">
+								<div style="font-size: 75%;">
+									$$\ket{n}\!\!\bra{n} = \frac{1}{S}\left(\hat{\mathcal{I}} + \hat{Q}_n\right)
+									\vphantom{C_{\alpha\beta}(t) = \mathrm{Tr}\Big[
+									\hat{\rho}_{\mathrm{nuc}}\ket{\alpha}\!\bra{\alpha}
+									\mathrm{e}^{\mathrm{i}\hat{H}t}\ket{\beta}\!\bra{\beta} \mathrm{e}^{-\mathrm{i}\hat{H}t}\Big]}$$
+								</div>
+							</div>
+							<div class="column">
+								<div style="font-size: 75%;">
+									$$C_{\alpha\beta}(t) = \mathrm{Tr}\Big[
+									\hat{\rho}_{\mathrm{nuc}}\ket{\alpha}\!\bra{\alpha}
+									\mathrm{e}^{\mathrm{i}\hat{H}t}\ket{\beta}\!\bra{\beta} \mathrm{e}^{-\mathrm{i}\hat{H}t}\Big]$$
+								</div>
+							</div>
+						</div>
+
+						<div style="font-size: 56%; margin-top: 2em;">
+							$$C_{\alpha\beta}(t) = \frac{1}{S^2} \Big(
+							\underbrace{\cancel{C_{\mathcal{II}}(t)}}_{S} + \underbrace{\cancel{C_{Q_\alpha\mathcal{I}}(t)}}_{0} + C_{\mathcal{I}Q_\beta}(t) + C_{Q_\alpha Q_\beta}(t)
+							\Big)$$
+							<div class="fragment">
+								$$C_{\mathcal{I}Q_\beta}(t) \approx \Big\langle \underbrace{\cancel{\mathcal{I}(X,P)}}_{1} Q_\beta (X(t), P(t))\Big\rangle$$
+								$$C_{Q_\alpha Q_\beta}(t) \approx \Big\langle Q_\alpha (X,P) Q_\beta (X(t), P(t))\Big\rangle$$
+							</div>
+						</div>
+				</section>
+
+				<section>
+						<h4 style="margin-bottom: 1em;">
+							Improved Mapping: Traceless operators 2
+						</h4>
+
+						<div class="row" style="font-size: 75%; margin-top: 1em;">
+							<div class="column" style="margin-right: 10%;">
+								<div style="font-size: 75%;">
+									$$\ket{n}\!\!\bra{n} = \frac{1}{S}\left(\hat{\mathcal{I}} + \hat{Q}_n\right)
+									\vphantom{C_{\alpha\beta}(t) = \mathrm{Tr}\Big[
+									\hat{\rho}_{\mathrm{nuc}}\ket{\alpha}\!\bra{\alpha}
+									\mathrm{e}^{\mathrm{i}\hat{H}t}\ket{\beta}\!\bra{\beta} \mathrm{e}^{-\mathrm{i}\hat{H}t}\Big]}$$
+								</div>
+							</div>
+							<div class="column">
+								<div style="font-size: 75%;">
+									$$C_{\alpha\beta}(t) = \mathrm{Tr}\Big[
+									\hat{\rho}_{\mathrm{nuc}}\ket{\alpha}\!\bra{\alpha}
+									\mathrm{e}^{\mathrm{i}\hat{H}t}\ket{\beta}\!\bra{\beta} \mathrm{e}^{-\mathrm{i}\hat{H}t}\Big]$$
+								</div>
+							</div>
+						</div>
+
+						<div style="font-size: 56%; margin-top: 2em;">
+							$$C_{\alpha\beta}(t) = \frac{1}{S^2} \Big(
+							\underbrace{\cancel{C_{\mathcal{II}}(t)}}_{S} + \underbrace{\cancel{C_{Q_\alpha\mathcal{I}}(t)}}_{0} + C_{\mathcal{I}Q_\beta}(t) + C_{Q_\alpha Q_\beta}(t)
+							\Big)$$
+							$$C_{\mathcal{I}Q_\beta}(t) \approx \Big\langle \textcolor{royalblue}{\underbrace{\cancel{\mathcal{I}(X,P)}}_{1}} Q_\beta (X(t), P(t))\Big\rangle$$
+							$$C_{Q_\alpha Q_\beta}(t) \approx \Big\langle Q_\alpha (X,P) Q_\beta (X(t), P(t))\Big\rangle$$
+						</div>
+				</section>
+			</section>
+
+				<section>
+					<section>
+						<h2>Application: FMO</h2>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: -2em;">
+							Fenna-Matthews-Olson Complex
+						</h4>
+						<img src="fig/cpk.png" style="width: 45%;">
+						<div style="font-size: 50%; margin-top: -2em;">
+							<ul>
+								<li>420 nuclear degrees of freedom (HO to model protein environment)</li>
+								<li>7 electronic "states" (<em>bacteriochlorophyll</em> sites)</li>
+								<li>Near 100% efficient excitation transfer</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: -2em;">
+							Fenna-Matthews-Olson Complex
+						</h4>
+						<img src="fig/protein.png" style="width: 45%;">
+						<div style="font-size: 50%; margin-top: -2em;">
+							<ul>
+								<li>420 nuclear degrees of freedom (HO to model protein environment)</li>
+								<li>7 electronic "states" (<em>bacteriochlorophyll</em> sites)</li>
+								<li>Near 100% efficient excitation transfer</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: -2em;">
+							Fenna-Matthews-Olson Complex
+						</h4>
+						<img src="fig/protein_pig.png" style="width: 45%;">
+						<div style="font-size: 50%; margin-top: -2em;">
+							<ul>
+								<li>420 nuclear degrees of freedom (HO to model protein environment)</li>
+								<li>7 electronic "states" (<em>bacteriochlorophyll</em> sites)</li>
+								<li>Near 100% efficient excitation transfer</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: -2em;">
+							Fenna-Matthews-Olson Complex
+						</h4>
+						<img src="fig/pig.png" style="width: 45%;">
+						<div style="font-size: 50%; margin-top: -2em;">
+							<ul>
+								<li>420 nuclear degrees of freedom (HO to model protein environment)</li>
+								<li>7 electronic "states" (<em>bacteriochlorophyll</em> sites)</li>
+								<li>Near 100% efficient excitation transfer</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							FMO Results
+						</h4>
+						<img src="fig/fmo_warm_trad.png" style="width: 100%; opacity: 0;">
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							FMO Results
+						</h4>
+						<img src="fig/fmo_warm_trad.png" style="width: 100%;">
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							FMO Results
+						</h4>
+						<img src="fig/fmo_warm.png" style="width: 100%;">
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							FMO Results
+						</h4>
+						<img src="fig/fmo_warm_trad-6.png" style="width: 100%;">
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							FMO Results
+						</h4>
+						<img src="fig/fmo_warm-6.png" style="width: 100%;">
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							FMO Results
+						</h4>
+						<img src="fig/fmo_cold_trad.png" style="width: 100%;">
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							FMO Results
+						</h4>
+						<img src="fig/fmo_cold.png" style="width: 100%;">
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							FMO Results
+						</h4>
+						<img src="fig/fmo_cold_trad-6.png" style="width: 100%;">
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							FMO Results
+						</h4>
+						<img src="fig/fmo_cold-6.png" style="width: 100%;">
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							FMO Conclusions
+						</h4>
+						<ul style="font-size: 75%; float: left;">
+							<li style="color: red;">
+								Traditional mapping underperforms for the FMO benchmark
+							</li>
+							<br>
+							<li style="color: royalblue;">
+								Improved operators completely address this at no extra cost
+							</li>
+							<li style="color: royalblue;">
+								This gives us a linearly scaling and accurate method for studying nonadiabatic dynamics at biological scale
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Application: Cavities</h2>
+					</section>
+
+						<section>
+						<img src="fig/mol.png">
+					</section>
+
+					<section>
+						<img src="fig/mol_mirror.png">
+					</section>
+					
+					<section>
+						<img src="fig/mirror_modes.png">
+					</section>
+
+					<section>
+						<img src="fig/reaction.png" style="width: 500px">
+						<img src="fig/films.png" style="width: 500px;">
+						<div style="font-size: 20px;">
+							Ebbesen <em>et al.</em>,  <em>Angw. Chem.</em>, <b>51</b>, 1592-1596 (2012)
+						</div>
+					</section>
+
+					<section>
+						<img src="fig/result.png" style="width: 750px">
+						<div style="font-size: 20px;">
+							Ebbesen <em>et al.</em>,  <em>Angw. Chem.</em>, <b>51</b>, 1592-1596 (2012)
+						</div>
+					</section>
+
+					<section>
+						<p>Ebbesen <em>et al.</em>,  <em>Phys. Rev. Lett.</em>, <b>106</b>, 196405 (2011)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Angw. Chem.</em>, <b>51</b>, 1592-1596 (2012)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Chem. Phys. Chem.</em>, <b>14</b>, 125-131 (2013)</p>
+						<p>Ebbesen <em>et al.</em>,  <em>Acc. Chem. Res.</em>, <b>49</b>, 2403-2412 (2016)</p>
+						<p class="fragment highlight-red">
+							Ebbesen <em>et al.</em>,  <em>Science</em>, <b>363</b>, 615-619 (2019)
+						</p>
+					</section>
+
+					<section>
+						<h2>
+							Simple Matter - Hard Cavity
+						</h2>						
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 3cm;">
+							Simple Matter - Hard Cavity
+						</h4>
+						<div style="font-size: 28px;">
+							\[
+							\hat{H} = \left(
+								\begin{array}{cc}
+									\varepsilon_1 &amp 0 \\
+									0 &amp \varepsilon_2 \\
+								\end{array}\right)
+
+								+ \sum\limits_{j=1}^{\textcolor{red}{200}} \mu \omega_j \lambda_j \textcolor{red}{R_j}
+								\left(
+								\begin{array}{cc}
+									0 &amp 1 \\
+									1 &amp 0 \\
+								\end{array}\right)
+								+ \sum\limits_{j=1}^{\textcolor{red}{200}} \hbar \omega_j a^{\dagger}_j a_j
+							\]
+						</div>
+						<div>
+							<p>+</p>
+							<p>a 3-level version</p>
+						</div>
+					</section>
+
+					<section>
+						<h4>
+							Simple Matter - Hard Cavity
+						</h4>
+						<img src="fig/mirror_two_level.png">						
+					</section>
+
+					<section>
+						<h4>
+							Simple Matter - Hard Cavity
+						</h4>
+						<img src="fig/2D.png" style="width: 85%; margin-bottom: -.5cm;">
+						<p style="font-size: 20px;">2-level system</p>
+						<p style="font-size: 20px;">
+							MACS, A. Kelly and E. Geva, <em>J. Chem. Phys. Lett.</em>, <b>12</b>, 3163-3170 (2021)
+						</p>
+					</section>
+
+					<section>
+						<h4>
+							Simple Matter - Hard Cavity
+						</h4>
+						<img src="fig/3D.png" style="width: 85%; margin-bottom: -.5cm;">
+						<p style="font-size: 20px;">3-level system</p>
+						<p style="font-size: 20px;">
+							MACS, A. Kelly and E. Geva, <em>J. Chem. Phys. Lett.</em>, <b>12</b>, 3163-3170 (2021)
+						</p>
+					</section>
+
+					<section>
+						<h2>
+							Hard Matter - Simple Cavity
+						</h2>					
+					</section>
+
+
+					<section>
+						<h4 style="margin-bottom: 3cm;">
+							Hard Matter - Simple Cavity
+						</h4>
+						<div style="font-size: 28px;">
+							\[\begin{align*}
+							\hat{H} = &amp\left(
+								\begin{array}{cc}
+									0 &amp \Delta \\
+									\Delta &amp -\varepsilon \\
+								\end{array}\right)
+							+ \frac{1}{2} \left[
+							\frac{P_s^2}{M_s} + M_s \omega_s^2\left(
+							\begin{array}{cc}
+							R_s^2 &amp 0 \\
+							0 &amp (R_s - R_\mathrm{A}^0)^2
+							\end{array}\right)
+							\right]\\
+							&amp+ \frac{1}{2} \sum\limits_{j=1}^{\textcolor{red}{100}}
+							\frac{P_j^2}{M_j} + m_j \omega_j^2 \Big(R_j - \frac{c_j}{M_j \omega_j^2}R_s \Big)^2\\
+							&amp+ \hbar g_c (a^{\dagger}_c + a_c)
+							\left(
+							\begin{array}{cc}
+								0 &amp 1 \\
+								1 &amp 0 \\
+							\end{array}\right)
+							+ \hbar \omega_c a^{\dagger}_c a_c
+							\end{align*}\]
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1cm;">
+							Hard Matter - Simple Cavity
+						</h4>
+						<img src="fig/mirror_ct.png">						
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 3cm;">
+							Hard Matter - Simple Cavity
+						</h4>
+						<div>
+							\[k_{\mathrm{D}\to\mathrm{A}} = \int \mathrm{e}^{\mathrm{i}\varepsilon t} C_{FGR} (t) ~\mathrm{d}t\]
+						</div>
+						<div>
+							\[C_{FGR} (t) = \mathrm{Tr}\Big[\hat{\rho}^{eq} \mathrm{e}^{\mathrm{i}\hat{H}_{\mathrm{D}}t} \hat{\Gamma}_{\mathrm{DA}}\mathrm{e}^{-\mathrm{i}\hat{H}_{\mathrm{A}}t} \hat{\Gamma}_{\mathrm{DA}}\Big]\]
+						</div>		
+					</section>
+
+					<section>
+						<h4>
+							Hard Matter - Simple Cavity
+						</h4>
+						<img src="fig/partial.png" style="margin-bottom: -.5cm;">		
+						<p style="font-size: 25px;">LSC + FGR can give <u>exact</u> results</p>
+						<p style="font-size: 20px;">
+							MACS, Y. Lai and E. Geva, <em>J. Chem. Phys. Lett.</em>, <b>13</b>, 2330-2337 (2022)
+						</p>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 2em;">
+							Separability of cavity modes
+						</h4>
+						<ul style="font-size: 75%; float: left;">
+							<li>Use the same factorisation approach as mLSC</li>
+							<li>Cavity modes and nuclear modes are usually not coupled directly</li>
+							<li>Split observables into cavity-free terms and analytical cavity terms</li>
+							<div class="fragment" style="color: royalblue;">
+							<li>Compute cavity-modified rates without simulating cavity modes</li>
+							<li>Applicable to single and multiple mode cavities</li>
+							<li>Allows us to cheaply determine optimal cavity parameters</li>
+							</div>
+						</ul>
+						<br><br><br><br><br>
+						<p style="font-size: 20px; margin-top: 2em;">
+							MACS, Y. Lai and E. Geva, <em>J. Phys. Chem. C</em>, <b>127</b>, 3154-3164 (2023)
+						</p>
+						<p style="font-size: 20px;">
+							MACS, Y. Lai and E. Geva, <em>J. Chem. Phys.</em>, submitted (2023)
+						</p>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							Cavity Conclusions
+						</h4>
+						<ul style="font-size: 75%; float: left;">
+							<li>Improved operators again outperform traditional mapping for cavities</li>
+							<li>Mapping can be used to calculate exact FGR rates of reaction</li>
+							<br>
+							<li style="color: royalblue;">
+								The mLSC separation can in fact be used to compute cavity-modified dynamics without ever having to simulate the cavity modes
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Branching Out</h2>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							On-the-fly dynamics
+						</h4>
+						<div style="font-size: 70%;" class="row">
+							<div class="column" style="border: 3pt solid #ffffff;padding: 1rem; border-radius: 1rem; margin-right: 20%;">
+								Molecular Dynamics
+							</div>
+
+							<div class="column" style="border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem;">
+								Electronic Structure
+							</div>
+						</div>
+
+						<div style="font-size: 50%; margin-top: 1rem;" class="row">
+							<div class="column" style="margin-right: 20%; text-align: left;">
+								<ul>
+									<li>Evolve system in time by integrating classical equations of motion: $$\dot{q} = \frac{\partial H}{\partial p} \qquad \dot{p} = -\frac{\partial H}{\partial x}$$</li>
+									<li>Linear scaling with system size</li>
+								</ul>
+							</div>
+							<div class="column" style="text-align: left;">
+								<ul>
+									<li>Calculate static properties by solving the time-independent Schrödinger equation:$$\hat{H} \Psi = E \Psi\vphantom{-\frac{\partial V}{\partial x}}$$</li>
+									<li>
+										Non-linear scaling with system size:
+										<br> DFT O(n<sup>3</sup>), MP2 O(n<sup>5</sup>), CCSD(T) O(n<sup>7</sup>)
+									</li>
+							</div>
+						</div>
+						<div style="font-size: 40%; margin-top: 3em;">
+							
+							$$C_{AB} (t) = \frac{1}{(2\pi)^{S+F}} \iint\iint
+							[\hat{\rho}]^W\!(q,p) \,\,[\hat{A}]^W\!(X,P)\,\,
+							[\hat{B}]^W\!(X(t), P(t))\,\,
+							\mathrm{d}q\, \mathrm{d}p\, \mathrm{d}X\, \mathrm{d}P$$
+							<br>
+							$$\dot{q} = \frac{\partial H}{\partial p} \qquad \dot{p} = -\frac{\partial U}{\partial q} - \frac{1}{2} \left[ X^\mathrm{T}\frac{\partial V}{\partial q}X + P^\mathrm{T}\frac{\partial V}{\partial q}P - Tr \frac{\partial V}{\partial q}\right]\qquad \dot{X} = \frac{1}{\hbar}VP \qquad \dot{P} = -\frac{1}{\hbar} V X$$
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							On-the-fly dynamics
+						</h4>
+						<div style="font-size: 70%;" class="row">
+							<div class="column" style="border: 3pt solid royalblue; padding: 1rem; border-radius: 1rem; margin-right: 20%; color: royalblue;">
+								Molecular Dynamics
+							</div>
+
+							<div class="column" style="border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem;">
+								Electronic Structure
+							</div>
+						</div>
+
+						<div style="font-size: 50%; margin-top: 1rem;" class="row">
+							<div class="column" style="margin-right: 20%; text-align: left;">
+								<ul>
+									<li>Evolve system in time by integrating classical equations of motion: $$\dot{q} = \frac{\partial H}{\partial p} \qquad \dot{p} = -\frac{\partial H}{\partial x}$$</li>
+									<li>Linear scaling with system size</li>
+								</ul>
+							</div>
+							<div class="column" style="text-align: left;">
+								<ul>
+									<li>Calculate static properties by solving the time-independent Schrödinger equation:$$\hat{H} \Psi = E \Psi\vphantom{-\frac{\partial V}{\partial x}}$$</li>
+									<li>
+										Non-linear scaling with system size:
+										<br> DFT O(n<sup>3</sup>), MP2 O(n<sup>5</sup>), CCSD(T) O(n<sup>7</sup>)
+									</li>
+							</div>
+						</div>
+						<div style="font-size: 40%; margin-top: 3em;">
+							
+							$$C_{AB} (t) = \frac{1}{(2\pi)^{S+F}} \iint\iint
+							\textcolor{royalblue}{[\hat{\rho}]^W\!(q,p) \,\,[\hat{A}]^W\!(X,P)}\,\,
+							[\hat{B}]^W\!(X(t), P(t))\,\,
+							\mathrm{d}q\, \mathrm{d}p\, \mathrm{d}X\, \mathrm{d}P$$
+							<br>
+							$$\dot{q} = \frac{\partial H}{\partial p} \qquad \dot{p} = -\frac{\partial U}{\partial q} - \frac{1}{2} \left[ X^\mathrm{T}\frac{\partial V}{\partial q}X + P^\mathrm{T}\frac{\partial V}{\partial q}P - Tr \frac{\partial V}{\partial q}\right]\qquad \dot{X} = \frac{1}{\hbar}VP \qquad \dot{P} = -\frac{1}{\hbar} V X$$
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							On-the-fly dynamics
+						</h4>
+						<div style="font-size: 70%;" class="row">
+							<div class="column" style="border: 3pt solid #ffffff;padding: 1rem; border-radius: 1rem; margin-right: 20%;">
+								Molecular Dynamics
+							</div>
+
+							<div class="column" style="border: 3pt solid royalblue; padding: 1rem; border-radius: 1rem; color: royalblue;">
+								Electronic Structure
+							</div>
+						</div>
+
+						<div style="font-size: 50%; margin-top: 1rem;" class="row">
+							<div class="column" style="margin-right: 20%; text-align: left;">
+								<ul>
+									<li>Evolve system in time by integrating classical equations of motion: $$\dot{q} = \frac{\partial H}{\partial p} \qquad \dot{p} = -\frac{\partial H}{\partial x}$$</li>
+									<li>Linear scaling with system size</li>
+								</ul>
+							</div>
+							<div class="column" style="text-align: left;">
+								<ul>
+									<li>Calculate static properties by solving the time-independent Schrödinger equation:$$\hat{H} \Psi = E \Psi\vphantom{-\frac{\partial V}{\partial x}}$$</li>
+									<li>
+										Non-linear scaling with system size:
+										<br> DFT O(n<sup>3</sup>), MP2 O(n<sup>5</sup>), CCSD(T) O(n<sup>7</sup>)
+									</li>
+							</div>
+						</div>
+						<div style="font-size: 40%; margin-top: 3em;">
+							
+							$$C_{AB} (t) = \frac{1}{(2\pi)^{S+F}} \iint\iint
+							[\hat{\rho}]^W\!(q,p) \,\,[\hat{A}]^W\!(X,P)\,\,
+							[\hat{B}]^W\!(X(t), P(t))\,\,
+							\mathrm{d}q\, \mathrm{d}p\, \mathrm{d}X\, \mathrm{d}P$$
+							<br>
+							$$\dot{q} = \frac{\partial \textcolor{royalblue}{H}}{\partial p} \qquad \dot{p} = -\frac{\partial \textcolor{royalblue}{U}}{\partial q} - \frac{1}{2} \left[ X^\mathrm{T}\frac{\partial \textcolor{royalblue}{V}}{\partial q}X + P^\mathrm{T}\frac{\partial \textcolor{royalblue}{V}}{\partial q}P - Tr \frac{\partial \textcolor{royalblue}{V}}{\partial q}\right]\qquad \dot{X} = \frac{1}{\hbar}\textcolor{royalblue}{V}P \qquad \dot{P} = -\frac{1}{\hbar} \textcolor{royalblue}{V} X$$
+						</div>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							Machine Learning
+						</h4>
+						<div style="font-size: 65%;" class="row">
+							<div class="column" style="border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem;">
+								Electronic Structure
+							</div>
+							<div class="column" style="width: 20%">
+								<img src="fig/arrow.png" style="width: 15%; transform: rotate(-90deg);  margin-top: -.4em;">
+							</div>
+							<div class="column" style="border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem;">
+								Potential Energy Surface
+							</div>
+						</div>
+						<ul style="margin-top: 1em; font-size: 60%; float: right;  margin-right: 5%;" class="fragment" data-fragment-index="1">
+							<li>Kernel Ridge Regression</li>
+							<li>Gaussian Process Regression</li>
+						</ul>
+						<div style="font-size: 40%; margin-top: 7em;">
+							$$\phantom{\dot{q} = \frac{\partial H}{\partial p} \qquad \dot{p} = -\frac{\partial U}{\partial q} - \frac{1}{2} \left[ X^\mathrm{T}\frac{\partial V}{\partial q}X + P^\mathrm{T}\frac{\partial V}{\partial q}P - Tr \frac{\partial V}{\partial q}\right]\qquad \dot{X} = \frac{1}{\hbar}VP \qquad \dot{P} = -\frac{1}{\hbar} V X}$$
+						</div>
+						<p style="font-size: 20px; margin-top: 3em;" class="fragment"  data-fragment-index="1">
+							Laude, Calderini, Tew, Richardson, <em>Faraday Discuss.</em>, <b>212</b>, 237-258 (2018)
+						</p>
+						<p style="font-size: 20px;" class="fragment"  data-fragment-index="1">
+							Richardson, Bowman, <em>et al., J. Am. Chem. Soc.</em>, <b>145</b>, 9655-9664 (2023)
+						</p>
+					</section>
+
+					<section>
+						<h4 style="margin-bottom: 1em;">
+							Machine Learning
+						</h4>
+						<div style="font-size: 65%;" class="row">
+							<div class="column" style="border: 3pt solid #ffffff; padding: 1rem; border-radius: 1rem;">
+								Electronic Structure
+							</div>
+							<div class="column" style="width: 20%">
+								<img src="fig/arrow.png" style="width: 15%; transform: rotate(-90deg); margin-top: -.4em;">
+							</div>
+							<div class="column" style="border: 3pt solid royalblue; padding: 1rem; border-radius: 1rem; color: royalblue;">
+								Potential Energy Surface
+							</div>
+						</div>
+						<ul style="margin-top: 1em; font-size: 60%; float: right; margin-right: 5%;">
+							<li>Kernel Ridge Regression</li>
+							<li>Gaussian Process Regression</li>
+						</ul>
+						<div style="font-size: 40%; margin-top: 7em;">
+							$$\dot{q} = \frac{\partial \textcolor{royalblue}{H}}{\partial p} \qquad \dot{p} = -\frac{\partial \textcolor{royalblue}{U}}{\partial q} - \frac{1}{2} \left[ X^\mathrm{T}\frac{\partial \textcolor{royalblue}{V}}{\partial q}X + P^\mathrm{T}\frac{\partial \textcolor{royalblue}{V}}{\partial q}P - Tr \frac{\partial \textcolor{royalblue}{V}}{\partial q}\right]\qquad \dot{X} = \frac{1}{\hbar}\textcolor{royalblue}{V}P \qquad \dot{P} = -\frac{1}{\hbar} \textcolor{royalblue}{V} X$$
+						</div>
+						<p style="font-size: 20px; margin-top: 3em;">
+							Laude, Calderini, Tew, Richardson, <em>Faraday Discuss.</em>, <b>212</b>, 237-258 (2018)
+						</p>
+						<p style="font-size: 20px;">
+							Richardson, Bowman, <em>et al., J. Am. Chem. Soc.</em>, <b>145</b>, 9655-9664 (2023)
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<h4>Acknowledgements</h4>
+					<div class="row" style="display: table-row; column_count: 2; margin-bottom: 1cm">
+						<div class="column" style="display: table-cell; float: center; width: 33%; vertical-align: top;">
+							<p style="font-size: 27px;">Prof. Eitan Geva</p>
+							<p style="font-size: 27px; margin-bottom: 2cm ">Dr Yifan Lai</p>
+
+							<p style="font-size: 27px;">Prof. Jeremy Richardson (ETH Zurich)</p>
+							<p style="font-size: 27px;">Dr Aaron Kelly<br>(MPI Hamburg)</p>
+						</div>
+
+						<div class="column" style="display: table-cell; float: center; width: 66%; vertical-align: top">
+							<img src="fig/group.jpg">
+						</div>
+					</div>
+
+					<img src="fig/logos.png">
+				</section>
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/math/math.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/customcontrols/plugin.js"></script>
+		<script>
+			function backHome() {
+  				window.location.assign("../../index.html")
+			}
+		</script>
+
+		<script>
+			Reveal.initialize({
+				hash: true,
+				slideNumber: false,
+				controls: true,
+				transition: 'fade',
+				navigationMode: "linear",
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX, RevealCustomControls ],
+				customcontrols : {
+					controls: [
+					           	{
+							        id: 'toggle-overview',
+							        title: 'Toggle overview (O)',
+							        icon: '<i class="fa fa-th"></i>',
+							        action: 'Reveal.toggleOverview();'
+							     },
+								{
+					           		id: 'exit',
+					           		title: 'Back to Website',
+					           		icon: '<i class="fa fa-times-circle"></i>',
+					           		// action: 'Reveal.toggleOverview();'
+					           		action: 'backHome();'
+					           	}
+					          ]
+				}
+			});
+		</script>
+	</body>
+</html>
