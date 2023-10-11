@@ -1,0 +1,363 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Dunietz Group Talk</title>
+
+<link rel="stylesheet" href="dist/reset.css">
+<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/black.css">
+
+<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+	<h1 style="margin-bottom: 10%;">
+		SRSH(r)
+	</h1>
+
+	<p style="margin-bottom: 10%; visibility: hidden;">
+		Anisotropic
+		Screened
+		Range-Separated Hybrids
+	</p>
+
+	<p>Max Saller</p>
+</section>
+
+<section>
+	<h1 style="margin-bottom: 10%;">
+		<span style="color: royalblue;">S</span>RSH<span style="color: green;">(r)</span>
+	</h1>
+
+	<p style="margin-bottom: 10%;">
+		<span style="color: green;">Anisotropic</span>
+		<span style="color: royalblue;">Screened</span>
+		Range-Separated Hybrids
+	</p>
+
+	<p>Max Saller</p>
+</section>
+
+<!--  -->
+
+<section>
+	<h4 style="margin-bottom: 10%;">RSH -  Range Separated Hybrid DFT Functionals</h4>
+
+	<div style="font-size: 40px;" class="fragment">
+		\[
+		E_\mathrm{XC} = 
+		\alpha E_\mathrm{HFx}^\mathrm{SR} +
+		\beta E_\mathrm{DFTx}^\mathrm{SR} +
+		(\alpha + \beta)E_\mathrm{HFx}^\mathrm{LR} +
+		E_\mathrm{DFTc}
+		\]
+	</div>
+
+	<div style="font-size: 75%; float: left; margin-top: 5%;">
+		<ul style="display: grid; gap: 10%;" class="fragment">
+			<li>$E_\mathrm{HFx}^\mathrm{SR}\,\,\rightarrow\,$"Exact" HF Exchange in the Short Range ($\alpha$ often chosen)</li>
+			<li>$E_\mathrm{DFTx}^\mathrm{SR}\,\rightarrow\,$DFT Exchange in the Short Range ($\beta$)</li>
+			<li>$E_\mathrm{HFx}^\mathrm{LR}\,\,\rightarrow\,$"Exact" HF Exchange in the Long Range ($\alpha+\beta\equiv 1$)</li>
+			<li>$E_\mathrm{DFTc}\,\rightarrow\,$DFT Correlation</li>
+		</ul>
+	</div>
+</section>
+
+<!--  -->
+
+<section>
+	<h4 style="margin-bottom: 10%;">Range Separation - Long vs Short Range</h4>
+
+	<div style="font-size: 40px;">
+		\[
+		\frac{1}{r} = \frac{\alpha + \beta\,\mathrm{erf}(\omega r)}{r} +
+		\frac{1 - (\alpha + \beta\,\mathrm{erf}(\omega r))}{r}
+		\]
+	</div>
+
+	<div style="font-size: 75%; float: left; margin-top: 2%;">
+		<ul style="display: grid; gap: 10%;" class="fragment" data-fragment-index="1">
+			<li>$\omega\,\rightarrow\,$Range Separation Parameter</li>
+			<li>Obtained via <em>Optimal Tuning</em> by Minimizing:</li>
+		</ul>
+	</div>
+
+	<div style="font-size: 30px; margin-top: 22%;" class="fragment" data-fragment-index="1">
+		\[
+		J_\mathrm{OT} (\omega) = [E_\mathrm{HOMO}(\omega) + \mathrm{IP}(\omega)]^2 +
+		[E_\mathrm{LUMO}(\omega) + \mathrm{EA}(\omega)]^2
+		\]
+	</div>
+</section>
+
+<!--  -->
+
+<section>
+	<h4 style="margin-bottom: 10%;">SRSH - Screened RSH</h4>
+
+	<div style="font-size: 75%; float: left; margin-left: -10%;">
+		<ul style="display: grid; gap: 15%;">
+			<li class="fragment">What about the Condensed Phase?</li>
+			<li class="fragment">We may not want 100% HF Exchange in the Long Range!</li>
+			<li class="fragment">"Screen" $E_\mathrm{HFx}^\mathrm{LR}\,\rightarrow\,$ include some Long Range DFT Exchange:</li>
+		</ul>
+	</div>
+
+	<div style="font-size: 30px; margin-top: 32%; margin-left: -15%;" class="fragment">
+		\[
+		E_\mathrm{XC} = 
+		\alpha E_\mathrm{HFx}^\mathrm{SR} +
+		(1-\alpha) E_\mathrm{DFTx}^\mathrm{SR} +
+		(\alpha + \beta) E_\mathrm{HFx}^\mathrm{LR} +
+		(1-\alpha-\beta) E_\mathrm{DFTx}^\mathrm{LR} +
+		E_\mathrm{DFTc}
+		\]
+	</div>
+
+	<div style="font-size: 75%; float: left; margin-left: -10%;">
+		<ul style="display: grid; gap: 15%;">
+			<li class="fragment">
+				The amount of screening is determined by the
+				<span style="color: royalblue;">solvent dielectric</span>:
+				$\,\alpha+\beta=\frac{1}{\textcolor{royalblue}{\varepsilon}}$
+			</li>
+		</ul>
+	</div>
+</section>
+
+<!--  -->
+
+<section>
+	<h4 style="margin-bottom: 10%;">SRSH(r) - Anisotropic Dielectric Environments</h4>	
+
+	<div style="font-size: 75%; float: left; margin-left: -10%;">
+		<ul style="display: grid; gap: 15%;">
+			<li class="fragment">Consider two different Dielectric Environments: $\varepsilon_A \neq \varepsilon_B$</li>
+			<li class="fragment">Screen with $\varepsilon_A$ or $\varepsilon_B$ depending on position</li>
+		</ul>
+
+		<div style="font-size: 30px; margin-top: 5%; margin-left: -10%;" class="fragment">
+			\[
+			E_\mathrm{XC} = 
+			\alpha E_\mathrm{HFx}^\mathrm{SR} +
+			(1-\alpha) E_\mathrm{DFTx}^\mathrm{SR} +
+			(\alpha + \beta) E_\mathrm{HFx}^\mathrm{LR} +
+			(1-\alpha-\beta) E_\mathrm{DFTx}^\mathrm{LR} +
+			E_\mathrm{DFTc}
+			\]
+		</div>
+		<div style="font-size: 30px; margin-top: 5%; margin-left: -10%;" class="fragment">
+			\[
+			E_\mathrm{XC} = 
+			\alpha E_\mathrm{HFx}^\mathrm{SR} +
+			\left(\textcolor{royalblue}{\frac{1}{\varepsilon(r)}}-\alpha\right) E_\mathrm{DFTx}^\mathrm{SR} +
+			\textcolor{royalblue}{\frac{1}{\varepsilon(r)}} E_\mathrm{HFx}^\mathrm{LR} +
+			\left(1-\textcolor{royalblue}{\frac{1}{\varepsilon(r)}}\right) E_\mathrm{DFTx}^\mathrm{LR} +
+			E_\mathrm{DFTc}
+			\]
+		</div>
+	</div>
+</section>
+
+<!--  -->
+
+<section>
+	<h4 style="margin-bottom: 5%;">SRSH(r) - Anisotropic Dielectric Grid: PEQS</h4>		
+	<a href="https://manual.q-chem.com/latest/sect_PEQS.html"><img src="fig/qchem.png" style="width: 100%"></a>
+</section>
+
+<!--  -->
+
+<section>
+	<section>
+		<h4 style="margin-bottom: 5%;">ANTH-TCNQ COMPLEX</h4>
+		<img src="fig/monomers.png" style="height: 400px;">	
+	</section>
+	
+	<section>
+		<h4 style="margin-bottom: 5%;">ANTH-TCNQ COMPLEX</h4>
+		<img src="fig/complex_35A.png" style="height: 400px;">	
+	</section>
+	
+	<section>
+		<h4 style="margin-bottom: 5%;">ANTH-TCNQ COMPLEX</h4>
+		<img src="fig/side_on.png" style="height: 400px;">	
+	</section>
+</section>
+
+<!--  -->
+
+<section>
+	<section>
+		<h4 style="margin-bottom: 10%; text-transform: none;">$E^{\textrm{CT}}$ - CHARGE TRANSFER ENERGY</h4>
+		
+		<div style="font-size: 75%;" class="fragment">
+			$$E^{\textrm{CT},\varepsilon}_\textrm{analytical} (r_\mathrm{DA}) = \left|E_\textrm{HOMO}^{D,\varepsilon} - E_\textrm{LUMO}^{A,\varepsilon}\right| - \frac{1}{\varepsilon\, r_\mathrm{DA}}$$	
+		</div>
+		
+		<div style="min-height: 15px;"></div>
+		
+		<div style="font-size: 75%; margin-left: 9%;" class="fragment">
+			$$E^{\textrm{CT},\varepsilon_D\varepsilon_A}_\textrm{analytical} (r_\mathrm{DA}) = \left|E_\textrm{HOMO}^{D,\varepsilon_D} - E_\textrm{LUMO}^{A,\varepsilon_A}\right| - \frac{1}{\sqrt{\varepsilon_\mathrm{D}\varepsilon_\mathrm{A}}r_\mathrm{DA}}$$	
+		</div>
+	</section>
+
+	<section>
+		<h4 style="margin-bottom: 10%; text-transform: none;">$E^{\textrm{CT}}$ - CHARGE TRANSFER ENERGY</h4>
+		
+		<div style="font-size: 75%;">
+			$$E^{\textrm{CT},\varepsilon}_\textrm{analytical} (r_\mathrm{DA}) = \textcolor{royalblue}{\left|E_\textrm{HOMO}^{D,\varepsilon} - E_\textrm{LUMO}^{A,\varepsilon}\right|} - \frac{1}{\varepsilon\, r_\mathrm{DA}}$$	
+		</div>
+		
+		<div style="min-height: 15px;"></div>
+		
+		<div style="font-size: 75%; margin-left: 9%;">
+			$$E^{\textrm{CT},\varepsilon_D\varepsilon_A}_\textrm{analytical} (r_\mathrm{DA}) = \textcolor{royalblue}{\left|E_\textrm{HOMO}^{D,\varepsilon_D} - E_\textrm{LUMO}^{A,\varepsilon_A}\right|} - \frac{1}{\sqrt{\varepsilon_\mathrm{D}\varepsilon_\mathrm{A}}r_\mathrm{DA}}$$	
+		</div>
+	</section>
+
+	<section>
+		<h4 style="margin-bottom: 10%; text-transform: none;">$E^{\textrm{CT}}$ - CHARGE TRANSFER ENERGY</h4>
+		
+		<div style="font-size: 75%;">
+			$$E^{\textrm{CT},\varepsilon}_\textrm{analytical} (r_\mathrm{DA}) = \left|E_\textrm{HOMO}^{D,\varepsilon} - E_\textrm{LUMO}^{A,\varepsilon}\right| - \textcolor{royalblue}{\frac{1}{\varepsilon\, r_\mathrm{DA}}}$$	
+		</div>
+		
+		<div style="min-height: 15px;"></div>
+		
+		<div style="font-size: 75%; margin-left: 9%;">
+			$$E^{\textrm{CT},\varepsilon_D\varepsilon_A}_\textrm{analytical} (r_\mathrm{DA}) = \left|E_\textrm{HOMO}^{D,\varepsilon_D} - E_\textrm{LUMO}^{A,\varepsilon_A}\right| - \textcolor{royalblue}{\frac{1}{\sqrt{\varepsilon_\mathrm{D}\varepsilon_\mathrm{A}}r_\mathrm{DA}}}$$	
+		</div>
+	</section>
+</section>
+
+<!--  -->
+
+<section>
+	<h4 style="margin-bottom: 10%; text-transform: none;">$E^{1/\varepsilon r}$ - SCREENING COMPONENT</h4>
+	
+	<div style="font-size: 75%; float: left;" class="fragment">
+		$$E^{1/\varepsilon r}_{\rm analytical} (r_{\rm DA})=-\frac{1}{\sqrt{\varepsilon_D \, \varepsilon_A}\, r_{DA}}$$
+	</div>
+	
+	<div style="min-height: 15px;"></div>
+	
+	<div style="font-size: 75%; float: left; margin-left: 1%;" class="fragment">
+		$$E^{1/\varepsilon r}_{\rm TDDFT} (r_{DA})=E^{{\rm CT},\varepsilon_D\varepsilon_A}_{\rm TDDFT}(r_{\rm DA}) - |E_{\rm HOMO}^{DA\varepsilon_D\varepsilon_A}(r_{DA})-E_{\rm LUMO}^{DA\varepsilon_D\varepsilon_A}(r_{DA})|$$
+	</div>
+</section>
+
+<!--  -->
+
+<section>
+	<h4 style="margin-bottom: 5%;">Typical Workflow</h4>
+
+	<div style="font-size: 75%; float: left; margin-left: -10%;">
+		<ul style="display: grid; gap: 10%;">
+			<li class="fragment">
+				Isotropic ($\varepsilon$=3.6 and $\varepsilon$=4.7) ANTH-TCNQ calculations to compute:
+				<ul style="display: grid; gap: 5%;">
+					<li>Charge transfer energy</li>
+					<li>HOMO and LUMO energies</li>
+					<li>PEQS grid for $\varepsilon$</li>
+				</ul>
+			</li>
+			<li class="fragment">
+				Create anisotropic PEQS grid:
+				<ul style="display: grid; gap: 5%;">
+					<li>In ANTH region, take gridpoints from $\varepsilon=\varepsilon_\mathrm{ANTH}=3.6$ grid</li>
+					<li>In TCNQ region, take gridpoints from $\varepsilon=\varepsilon_\mathrm{TCNQ}=4.7$ grid</li>
+				</ul>
+			</li>
+			<li class="fragment">
+				Anisotropic ANTH-TCNQ calculation (using "stitched" grid) to compute:
+				<ul style="display: grid; gap: 5%;">
+					<li>Charge transfer energy</li>
+					<li>HOMO and LUMO energies</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<!--  -->
+
+<section>
+	<h4 style="margin-bottom: 0%;">Some Insights - Charge Transfer Energy</h4>
+	
+	<img src="fig/E_CT.png" style="width: 75%">
+</section>
+
+<!--  -->
+
+<section>
+	<h4 style="margin-bottom: 5%;">Some Insights - Screening Component</h4>
+	
+	<img src="fig/screening_energy.png" style="width: 100%">
+	
+	<ul style="font-size: 75%;" class="fragment">
+		<li>Anisotropic $E^{1/\varepsilon r}$ converges to higher $\varepsilon$ isotropic value</li>
+	</ul>
+</section>
+
+<!--  -->
+
+
+<section>
+	<h4 style="margin-bottom: 2%; margin-top: 1%;">Project Goals</h4>
+	
+	<div style="font-size: 75%; float: left; margin-left: -10%;">
+		<p>Demonstrate SRSH(r) as the method of choice for anisotropic systems:</p>
+			<ul style="display: grid; gap: 10%; margin-top: 2%; padding-left: 5%;">
+				<li style="color: green;" class="fragment">
+					Show trend in $E^\mathrm{CT}_\mathrm{TDDFT}$ with complex separation $r_\mathrm{DA}$
+				</li>
+				<li style="color: green;" class="fragment">
+					Demonstrate $\lim\limits_{r_\mathrm{DA}\rightarrow \infty}E^\mathrm{CT}_\mathrm{TDDFT} = E^\mathrm{CT}_\mathrm{analytical}$
+				</li>
+				<li style="color: royalblue;" class="fragment">
+					Expand from ANTH-TCNQ bechmark to PS2 quinone pair
+				</li>
+			</ul>
+	</div>
+	<div style="margin-top: 30%; margin-bottom: 5%; display: table;">
+		<div style="float: left; width: 45%; padding: 5px;">
+			<img src="fig/ps2.png" style="width: 75%;" class="fragment">
+		</div>
+		<div style="float: right; width: 45%; padding: 5px;">
+			<img src="fig/quinones.png" style="width: 75%;" class="fragment">
+		</div>
+	</div>
+</section>
+<!-- 
+	<img src="fig/quinones.png" style="width: 40%;">
+	<img src="fig/ps2.png" style="width: 40%;" class="fragment" data-fragment-index="3">
+ -->
+
+</div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/math/math.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+	Reveal.initialize({
+		hash: true,
+		slideNumber: false,
+		controls: false,
+		transition: 'fade',
+		navigationMode: "linear",
+		plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+	});
+</script>
+</body>
+</html>
