@@ -58,7 +58,7 @@
     width: inherit;
     height: inherit;
     position: absolute;
-    line-height: 5px;
+    line-height: 2px;
     margin: 0;
     border-radius: 50%;
     background-color: none;
@@ -79,31 +79,31 @@
 }
 
 #menu:target>.menu-item:nth-child(6) {
-    transform: rotate(60deg) translateY(-100px) rotate(300deg);
+    transform: rotate(60deg) translateY(-120px) rotate(300deg);
     transition-delay: 0s;
     opacity: 1;
 }
 
 #menu:target>.menu-item:nth-child(5) {
-    transform: rotate(30deg) translateY(-95px) rotate(-30deg);
+    transform: rotate(30deg) translateY(-120px) rotate(-30deg);
     transition-delay: 0.1s;
     opacity: 1;
 }
 
 #menu:target>.menu-item:nth-child(7) {
-    transform:translateY(-100px);
+    transform:translateY(-120px);
     transition-delay: 0.2s;
     opacity: 1;
 }
 
 #menu:target>.menu-item:nth-child(3) {
-    transform: rotate(-30deg) translateY(-95px) rotate(30deg);
+    transform: rotate(-30deg) translateY(-120px) rotate(30deg);
     transition-delay: 0.3s;
     opacity: 1;
 }
 
 #menu:target>.menu-item:nth-child(4) {
-    transform: rotate(-60deg) translateY(-100px) rotate(60deg);
+    transform: rotate(-60deg) translateY(-120px) rotate(60deg);
     transition-delay: 0.4s;
     opacity: 1;
 }
