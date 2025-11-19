@@ -33,11 +33,20 @@
 
         .character-card.seraphina {
             background: linear-gradient(135deg, #ffc6e0 0%, #ffffff 100%);
-            color: #2a2a2a;
+            color: #5a3a4a;
         }
 
         .character-card.konstantin {
             background: linear-gradient(135deg, #6b9bd1 0%, #ffd700 100%);
+            color: #1a1a1a;
+        }
+
+        /* Make token count numbers visible */
+        .character-card.seraphina .token-count strong {
+            color: #5a3a4a;
+        }
+
+        .character-card.konstantin .token-count strong {
             color: #1a1a1a;
         }
 
@@ -61,10 +70,12 @@
         }
 
         .character-name {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             margin: 0;
             line-height: 1.2;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .character-class-level {
@@ -126,7 +137,7 @@
         .xp-controls {
             display: flex;
             gap: 1rem;
-            align-items: center;
+            align-items: stretch;
             flex-wrap: wrap;
         }
 
@@ -134,10 +145,19 @@
         .xp-controls input {
             flex: 1;
             min-width: 150px;
+            height: 48px;
+            padding: 0.75rem;
+            box-sizing: border-box;
         }
 
         .xp-controls button {
             padding: 0.75rem 1.5rem;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            line-height: 1;
         }
 
         /* Quick Reference */
