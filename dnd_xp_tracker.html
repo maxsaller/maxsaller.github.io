@@ -325,6 +325,99 @@
         // Initialize app
         let appData = loadData();
         let adminMode = false;
+
+        // Placeholder for processTokenChanges (will be implemented in Task 5)
+        function processTokenChanges(charIndex) {
+            // Token processing logic will be added in Task 5
+        }
+
+        // Render character cards
+        function renderCharacterCards() {
+            const container = document.getElementById('character-cards');
+            const cardsHTML = appData.characters.map((char, index) => {
+                const xpNeeded = calculateXPForNextToken(char.level, char.tokensEarned);
+                const progress = Math.min((char.currentXP / xpNeeded) * 100, 100);
+                const cardClass = char.name.toLowerCase();
+
+                return `
+                    <div class="character-card ${cardClass}">
+                        <div class="character-header">
+                            <img src="${char.portraitPath}" alt="${char.name}" class="character-portrait" onerror="this.src='assets/favicon.ico'">
+                            <div class="character-info">
+                                <h2 class="character-name">
+                                    <span class="editable" data-char="${index}" data-field="name">${char.name}</span>
+                                </h2>
+                                <p class="character-class-level">
+                                    <span class="editable" data-char="${index}" data-field="class">${char.class}</span> •
+                                    Level <span class="editable" data-char="${index}" data-field="level">${char.level}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" style="width: ${progress}%"></div>
+                                <div class="progress-text">
+                                    <span class="editable" data-char="${index}" data-field="currentXP">${char.currentXP}</span>/${xpNeeded} XP
+                                </div>
+                            </div>
+                        </div>
+                        <div class="token-count">
+                            ${char.name} currently has <span class="editable" data-char="${index}" data-field="tokensEarned"><strong>${char.tokensEarned}</strong></span> token${char.tokensEarned !== 1 ? 's' : ''}.
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = `<div class="character-cards-container">${cardsHTML}</div>`;
+            attachEditableListeners();
+        }
+
+        // Attach click listeners for admin mode editing
+        function attachEditableListeners() {
+            document.querySelectorAll('.editable').forEach(elem => {
+                elem.addEventListener('click', function() {
+                    if (!adminMode) return;
+
+                    const charIndex = parseInt(this.dataset.char);
+                    const field = this.dataset.field;
+                    const currentValue = appData.characters[charIndex][field];
+
+                    const input = document.createElement('input');
+                    input.type = field === 'level' || field === 'currentXP' || field === 'tokensEarned' ? 'number' : 'text';
+                    input.value = currentValue;
+                    input.style.width = '100px';
+
+                    const parent = this.parentElement;
+                    parent.replaceChild(input, this);
+                    input.focus();
+                    input.select();
+
+                    const saveEdit = () => {
+                        let newValue = input.value;
+                        if (input.type === 'number') {
+                            newValue = parseInt(newValue) || 0;
+                            if (newValue < 0) newValue = 0;
+                        }
+
+                        appData.characters[charIndex][field] = newValue;
+                        processTokenChanges(charIndex);
+                        saveData(appData);
+                        renderCharacterCards();
+                    };
+
+                    input.addEventListener('blur', saveEdit);
+                    input.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter') saveEdit();
+                        if (e.key === 'Escape') renderCharacterCards();
+                    });
+                });
+            });
+        }
+
+        // Initial render
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCharacterCards();
+        });
     </script>
 </body>
 </html>
