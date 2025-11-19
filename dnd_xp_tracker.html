@@ -224,6 +224,9 @@
             <div class="logo">
                 <span class="dndicon" onclick="window.location.href='dnd.html'"></span>
             </div>
+            <button class="admin-toggle button small" onclick="toggleAdminMode()">
+                <span id="admin-icon">🔒</span> <span id="admin-text">Locked</span>
+            </button>
             <div class="content">
                 <div class="inner" style="max-height: none; max-width: 90%; margin-left: auto; margin-right: auto;">
                     <h1>XP Tracker</h1>
@@ -500,6 +503,24 @@
 
             // Reset input
             document.getElementById('xp-amount').value = 0;
+        }
+
+        // Toggle admin mode
+        function toggleAdminMode() {
+            adminMode = !adminMode;
+            const wrapper = document.getElementById('wrapper');
+            const icon = document.getElementById('admin-icon');
+            const text = document.getElementById('admin-text');
+
+            if (adminMode) {
+                wrapper.classList.add('admin-mode-active');
+                icon.textContent = '🔓';
+                text.textContent = 'Admin Mode';
+            } else {
+                wrapper.classList.remove('admin-mode-active');
+                icon.textContent = '🔒';
+                text.textContent = 'Locked';
+            }
         }
 
         // Initial render
