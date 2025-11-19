@@ -210,13 +210,17 @@
             font-weight: bold;
         }
 
-        /* Admin Mode */
-        .admin-toggle {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            z-index: 1000;
+        /* Hide decorative lines in header */
+        #header:before,
+        #header:after,
+        #header .logo:before,
+        #header .logo:after,
+        #header .content:before,
+        #header .content:after {
+            display: none;
         }
+
+        /* Admin Mode - button now inline in Manage XP section */
 
         .admin-mode-active .editable {
             cursor: pointer;
@@ -264,9 +268,6 @@
             <div class="logo">
                 <span class="dndicon" onclick="window.location.href='dnd.html'"></span>
             </div>
-            <button class="admin-toggle button small" onclick="toggleAdminMode()">
-                <span id="admin-icon">🔒</span> <span id="admin-text">Locked</span>
-            </button>
             <div class="content">
                 <div class="inner" style="max-height: none; max-width: 90%; margin-left: auto; margin-right: auto;">
                     <h1>XP Tracker</h1>
@@ -510,6 +511,9 @@
                     <div class="data-management">
                         <button onclick="exportData()" class="button">Download Backup</button>
                         <button onclick="importData()" class="button">Upload Backup</button>
+                        <button onclick="toggleAdminMode()" class="button">
+                            <span id="admin-icon">🔒</span> <span id="admin-text">Locked</span>
+                        </button>
                     </div>
                     <div id="last-saved" class="last-saved"></div>
                 </div>
