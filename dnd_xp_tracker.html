@@ -583,6 +583,108 @@
             input.click();
         }
 
+        // Render quick reference guide
+        function renderQuickReference() {
+            const container = document.getElementById('quick-reference');
+
+            const html = `
+                <div class="quick-reference">
+                    <h3>XP Award Reference</h3>
+
+                    <h4>Token Formula</h4>
+                    <p><strong>XP per Token = 1000 × Level × (2 + Tokens Earned)</strong></p>
+                    <p>Example at Level 2: Token #1 costs 4,000 XP, Token #10 costs 24,000 XP</p>
+
+                    <h4>Skill Challenges</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Formula</th>
+                                <th>Level 2</th>
+                                <th>Level 5</th>
+                                <th>Level 10</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Minor</td>
+                                <td>100 × Level</td>
+                                <td>200 XP</td>
+                                <td>500 XP</td>
+                                <td>1,000 XP</td>
+                            </tr>
+                            <tr>
+                                <td>Major</td>
+                                <td>250 × Level</td>
+                                <td>500 XP</td>
+                                <td>1,250 XP</td>
+                                <td>2,500 XP</td>
+                            </tr>
+                            <tr>
+                                <td>Pivotal</td>
+                                <td>500 × Level</td>
+                                <td>1,000 XP</td>
+                                <td>2,500 XP</td>
+                                <td>5,000 XP</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Quest Completion</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Formula</th>
+                                <th>Level 2</th>
+                                <th>Level 5</th>
+                                <th>Level 10</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Side Quest</td>
+                                <td>200 × Level</td>
+                                <td>400 XP</td>
+                                <td>1,000 XP</td>
+                                <td>2,000 XP</td>
+                            </tr>
+                            <tr>
+                                <td>Main Quest</td>
+                                <td>500 × Level</td>
+                                <td>1,000 XP</td>
+                                <td>2,500 XP</td>
+                                <td>5,000 XP</td>
+                            </tr>
+                            <tr>
+                                <td>Major Arc</td>
+                                <td>1000 × Level</td>
+                                <td>2,000 XP</td>
+                                <td>5,000 XP</td>
+                                <td>10,000 XP</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Creature Kills (Last Hit)</h4>
+                    <p>Use CR-based XP from the Monster Manual. Common examples:</p>
+                    <ul>
+                        <li>CR 1/4: 50 XP</li>
+                        <li>CR 1/2: 100 XP</li>
+                        <li>CR 1: 200 XP</li>
+                        <li>CR 2: 450 XP</li>
+                        <li>CR 3: 700 XP</li>
+                        <li>CR 4: 1,100 XP</li>
+                        <li>CR 5: 1,800 XP</li>
+                    </ul>
+                    <p><em>Note: Adjust values based on actual challenge difficulty and story impact.</em></p>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
         // Initial render
         document.addEventListener('DOMContentLoaded', function() {
             renderCharacterCards();
