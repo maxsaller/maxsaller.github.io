@@ -12,7 +12,209 @@
         <link rel="stylesheet" href="dimension/assets/css/noscript.css" />
     </noscript>
     <style>
-        /* Custom styles will go here */
+        /* Character Cards */
+        .character-cards-container {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .character-card {
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            min-width: 350px;
+            max-width: 450px;
+            flex: 1;
+        }
+
+        .character-card.seraphina {
+            background: linear-gradient(135deg, #ffc6e0 0%, #ffffff 100%);
+            color: #2a2a2a;
+        }
+
+        .character-card.konstantin {
+            background: linear-gradient(135deg, #6b9bd1 0%, #ffd700 100%);
+            color: #1a1a1a;
+        }
+
+        .character-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .character-portrait {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            border: 3px solid rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+
+        .character-info {
+            flex: 1;
+        }
+
+        .character-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .character-class-level {
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0.8;
+            margin: 0.25rem 0 0 0;
+        }
+
+        .progress-container {
+            margin: 1rem 0;
+        }
+
+        .progress-bar-wrapper {
+            position: relative;
+            background: rgba(0, 0, 0, 0.2);
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 50%, #FFC107 100%);
+            transition: width 0.5s ease;
+            border-radius: 15px;
+        }
+
+        .progress-text {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .token-count {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* XP Management */
+        .xp-management {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .xp-management h3 {
+            margin-top: 0;
+        }
+
+        .xp-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .xp-controls select,
+        .xp-controls input {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .xp-controls button {
+            padding: 0.75rem 1.5rem;
+        }
+
+        /* Quick Reference */
+        .quick-reference {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .quick-reference h3 {
+            margin-top: 0;
+        }
+
+        .quick-reference table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .quick-reference th,
+        .quick-reference td {
+            padding: 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quick-reference th {
+            font-weight: bold;
+        }
+
+        /* Admin Mode */
+        .admin-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+        }
+
+        .admin-mode-active .editable {
+            cursor: pointer;
+            border-bottom: 2px dashed yellow;
+            padding: 2px 4px;
+            transition: background 0.2s;
+        }
+
+        .admin-mode-active .editable:hover {
+            background: rgba(255, 255, 0, 0.2);
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+
+        .highlight {
+            animation: highlight 0.5s ease;
+        }
+
+        @keyframes highlight {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; transform: scale(1.05); }
+        }
+
+        /* Export/Import */
+        .data-management {
+            margin: 1rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .last-saved {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 
