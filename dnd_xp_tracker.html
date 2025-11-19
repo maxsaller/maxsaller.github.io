@@ -447,9 +447,66 @@
             });
         }
 
+        // Render XP management interface
+        function renderXPManagement() {
+            const container = document.getElementById('xp-management');
+
+            const html = `
+                <div class="xp-management">
+                    <h3>Manage XP</h3>
+                    <div class="xp-controls">
+                        <select id="char-select">
+                            ${appData.characters.map((char, i) =>
+                                `<option value="${i}">${char.name}</option>`
+                            ).join('')}
+                        </select>
+                        <input type="number" id="xp-amount" placeholder="XP Amount" value="0" />
+                        <button onclick="modifyXP('add')" class="button primary">Add XP</button>
+                        <button onclick="modifyXP('subtract')" class="button">Subtract XP</button>
+                    </div>
+                    <div class="data-management">
+                        <button onclick="exportData()" class="button">Download Backup</button>
+                        <button onclick="importData()" class="button">Upload Backup</button>
+                    </div>
+                    <div id="last-saved" class="last-saved"></div>
+                </div>
+            `;
+
+            container.innerHTML = html;
+            updateLastSavedDisplay();
+        }
+
+        // Modify XP (add or subtract)
+        function modifyXP(action) {
+            const charIndex = parseInt(document.getElementById('char-select').value);
+            const amount = parseInt(document.getElementById('xp-amount').value) || 0;
+
+            if (amount === 0) {
+                alert('Please enter an XP amount');
+                return;
+            }
+
+            const char = appData.characters[charIndex];
+
+            if (action === 'add') {
+                char.currentXP += amount;
+            } else if (action === 'subtract') {
+                char.currentXP -= amount;
+            }
+
+            processTokenChanges(charIndex);
+            saveData(appData);
+            renderCharacterCards();
+
+            // Reset input
+            document.getElementById('xp-amount').value = 0;
+        }
+
         // Initial render
         document.addEventListener('DOMContentLoaded', function() {
             renderCharacterCards();
+            renderXPManagement();
+            renderQuickReference();
         });
     </script>
 </body>
