@@ -326,9 +326,42 @@
         let appData = loadData();
         let adminMode = false;
 
-        // Placeholder for processTokenChanges (will be implemented in Task 5)
+        // Process token gains/losses based on XP changes
         function processTokenChanges(charIndex) {
-            // Token processing logic will be added in Task 5
+            const char = appData.characters[charIndex];
+
+            // Handle token gains (XP overflow)
+            while (char.currentXP >= calculateXPForNextToken(char.level, char.tokensEarned)) {
+                const xpNeeded = calculateXPForNextToken(char.level, char.tokensEarned);
+                char.currentXP -= xpNeeded;
+                char.tokensEarned += 1;
+
+                // Visual feedback
+                setTimeout(() => {
+                    const tokenElement = document.querySelector(`[data-char="${charIndex}"][data-field="tokensEarned"]`);
+                    if (tokenElement) {
+                        tokenElement.parentElement.classList.add('highlight');
+                        setTimeout(() => tokenElement.parentElement.classList.remove('highlight'), 500);
+                    }
+                }, 100);
+            }
+
+            // Handle token losses (XP deficit)
+            while (char.currentXP < 0 && char.tokensEarned > 0) {
+                if (!confirm(`This will remove a token from ${char.name}. Continue?`)) {
+                    char.currentXP = 0;
+                    break;
+                }
+
+                char.tokensEarned -= 1;
+                const xpNeeded = calculateXPForNextToken(char.level, char.tokensEarned);
+                char.currentXP += xpNeeded;
+            }
+
+            // Can't go negative at 0 tokens
+            if (char.currentXP < 0 && char.tokensEarned === 0) {
+                char.currentXP = 0;
+            }
         }
 
         // Render character cards
