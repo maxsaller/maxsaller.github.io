@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>D&D Homebrew</title>
+		<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="dimension/assets/css/main.css" />
+		<link rel="stylesheet" href="radial.css" />
+		<link rel="stylesheet" href="assets/custom.css" />
+		<noscript>
+			<link rel="stylesheet" href="dimension/assets/css/noscript.css" />
+		</noscript>
+		<style>
+			.homebrew-grid {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 1.5rem;
+				padding: 1rem 0;
+			}
+			.homebrew-card {
+				background: rgba(255, 255, 255, 0.05);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-radius: 8px;
+				overflow: hidden;
+				transition: transform 0.2s ease, box-shadow 0.2s ease;
+				cursor: pointer;
+				text-decoration: none;
+				color: inherit;
+				display: block;
+				width: 200px;
+			}
+			.homebrew-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+				background: rgba(255, 255, 255, 0.1);
+			}
+			.homebrew-card-image {
+				width: 100%;
+				aspect-ratio: 1 / 1;
+				object-fit: cover;
+				display: block;
+			}
+			.homebrew-card-content {
+				padding: 1rem;
+			}
+			.homebrew-card-title {
+				font-size: 1.1rem;
+				font-weight: bold;
+				margin: 0 0 0.5rem 0;
+				color: #ffffff;
+			}
+			.homebrew-card-type {
+				font-size: 0.85rem;
+				color: rgba(255, 255, 255, 0.6);
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+			.section-title {
+				font-size: 1.2rem;
+				margin-bottom: 1rem;
+				color: #ffffff;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+			}
+		</style>
+	</head>
+
+	<body class="is-preload">
+		<div id="wrapper">
+			<header id="header">
+				<div class="logo">
+					<span class="dndicon" onclick="window.location.href='dnd.html'"></span>
+				</div>
+				<div class="content">
+					<div class="inner" style="max-height: none;">
+						<h1>Homebrew</h1>
+						<p>Custom content for your adventures.</p>
+
+						<h3 class="section-title">Subclasses</h3>
+						<div class="homebrew-grid">
+							<a href="figher_subclass.html" class="homebrew-card">
+								<img
+									src="https://cdn.midjourney.com/9648b3ee-07f8-46fe-b79a-1ac8829b6c95/0_0.png"
+									alt="Desert Hawk"
+									class="homebrew-card-image"
+								>
+								<div class="homebrew-card-content">
+									<h3 class="homebrew-card-title">Desert Hawk</h3>
+									<span class="homebrew-card-type">Fighter</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="dnd.html"><b>Back</b></a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<footer id="footer">
+				<p class="copyright">&copy; Max Saller 2023. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
+		</div>
+
+		<div id="bg"></div>
+
+		<script src="dimension/assets/js/jquery.min.js"></script>
+		<script src="dimension/assets/js/browser.min.js"></script>
+		<script src="dimension/assets/js/breakpoints.min.js"></script>
+		<script src="dimension/assets/js/util.js"></script>
+		<script src="dimension/assets/js/main.js"></script>
+
+	</body>
+</html>

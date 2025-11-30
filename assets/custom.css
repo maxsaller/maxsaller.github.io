@@ -19,3 +19,12 @@
 .dndicon:hover {
     background-color: rgba(255, 255, 255, 0.075)
 }
+
+/* Disable forced center alignment for even number of nav items */
+#header nav.use-middle:after {
+    display: none;
+}
+
+#header nav.use-middle ul li.is-middle {
+    border-left: solid 1px #ffffff;
+}
